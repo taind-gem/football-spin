@@ -6,7 +6,7 @@ package com.tafi.footballspin.model
 
 class User {
 
-    val Id: Long? = null
+    val id: Long? = null
 
     var username: String? = null
 

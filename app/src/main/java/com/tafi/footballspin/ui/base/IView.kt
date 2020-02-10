@@ -6,7 +6,7 @@ import androidx.annotation.StringRes
  * Created by taind-201 on 2/7/2020.
  */
 
-interface MvpView {
+interface IView {
 
     val isNetworkConnected: Boolean
 
@@ -18,9 +18,9 @@ interface MvpView {
 
     fun onError(@StringRes resId: Int)
 
-    fun onError(message: String)
+    fun onError(message: String?)
 
-    fun showMessage(message: String)
+    fun showMessage(message: String?)
 
     fun showMessage(@StringRes resId: Int)
 

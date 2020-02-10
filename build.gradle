@@ -32,4 +32,16 @@ ext {
     targetSdkVersion = 28
     compileSdkVersion = 28
     buildToolsVersion = '28.0.3'
+
+    roomVersion = "2.2.3"
+    timberVersion = "4.7.1"
+    gsonVersion = "2.8.6"
+    glideVersion = "4.11.0"
+    dagger2Version = "2.8"
+    rxjava2Version = "2.1.1"
+    rxandroidVersion = "2.1.1"
+
+    junitVersion = '4.12'
+    espressoVersion = '2.2.2'
+    mockitoVersion = '2.7.1'
 }
