@@ -1,0 +1,6 @@
+app/app.iml
+football-spin.iml
+.gradle/
+.idea/
+app/build/
+local.properties
