@@ -24,7 +24,7 @@ class AppPreferences : PreferencesHelper {
         mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
     }
 
-    override fun getCurrentUserLoggedInMode(): Int? {
+    override fun getCurrentUserLoggedInMode(): Int {
         return mPrefs.getInt(PREF_KEY_USER_LOGGED_IN_MODE, LoggedInMode.MODE_LOGGED_OUT.type)
     }
 

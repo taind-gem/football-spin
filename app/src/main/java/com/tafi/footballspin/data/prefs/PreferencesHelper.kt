@@ -8,7 +8,7 @@ import com.tafi.footballspin.model.entity.LoggedInMode
 
 interface PreferencesHelper {
 
-    fun getCurrentUserLoggedInMode(): Int?
+    fun getCurrentUserLoggedInMode(): Int
 
     fun setCurrentUserLoggedInMode(mode: LoggedInMode)
 

@@ -4,7 +4,7 @@ import android.app.Application
 import com.tafi.footballspin.di.component.ApplicationComponent
 import com.tafi.footballspin.di.component.DaggerApplicationComponent
 import com.tafi.footballspin.di.module.ApplicationModule
-import com.tafi.footballspin.utils.AppLogger
+import timber.log.Timber
 
 /**
  * Created by taind-201 on 2/7/2020.
@@ -20,9 +20,11 @@ class MainApp : Application() {
         mApplicationComponent = DaggerApplicationComponent.builder()
             .applicationModule(ApplicationModule(this)).build()
 
-        mApplicationComponent!!.inject(this)
+        mApplicationComponent?.inject(this)
 
-        AppLogger.init()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
     fun getComponent(): ApplicationComponent? {
