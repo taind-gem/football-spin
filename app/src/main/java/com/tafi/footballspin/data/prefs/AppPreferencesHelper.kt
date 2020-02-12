@@ -12,17 +12,12 @@ import javax.inject.Inject
  * Created by taind-201 on 2/11/2020.
  */
 
-class AppPreferences : PreferencesHelper {
+class AppPreferencesHelper @Inject constructor(
+    @ApplicationContext val context: Context,
+    @PreferenceInfo val prefFileName: String
+) : PreferencesHelper {
 
-    private lateinit var mPrefs: SharedPreferences
-
-    @Inject
-    fun AppPreferences(
-        @ApplicationContext context: Context,
-        @PreferenceInfo prefFileName: String?
-    ) {
-        mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
-    }
+    var mPrefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
     override fun getCurrentUserLoggedInMode(): Int {
         return mPrefs.getInt(PREF_KEY_USER_LOGGED_IN_MODE, LoggedInMode.MODE_LOGGED_OUT.type)

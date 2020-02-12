@@ -10,31 +10,20 @@ import javax.inject.Inject
  * Created by taind-201 on 2/7/2020.
  */
 
-open class BasePresenter<V : IView> : IPresenter<V> {
+open class BasePresenter<V : IView> @Inject constructor(
+    open var mDataManager: DataManager,
+    open var mSchedulerProvider: SchedulerProvider,
+    open var mCompositeDisposable: CompositeDisposable
+): IPresenter<V> {
 
-    private var mDataManager: DataManager? = null
-    private var mSchedulerProvider: SchedulerProvider? = null
-    private var mCompositeDisposable: CompositeDisposable? = null
-
-    private var mView: V? = null
-
-    @Inject
-    open fun BasePresenter(
-        dataManager: DataManager,
-        schedulerProvider: SchedulerProvider?,
-        compositeDisposable: CompositeDisposable?
-    ) {
-        mDataManager = dataManager
-        mSchedulerProvider = schedulerProvider
-        mCompositeDisposable = compositeDisposable
-    }
+    var mView: V? = null
 
     override fun onAttach(view: V) {
         mView = view
     }
 
     override fun onDetach() {
-        mCompositeDisposable!!.dispose()
+        mCompositeDisposable.dispose()
         mView = null
     }
 
@@ -45,7 +34,7 @@ open class BasePresenter<V : IView> : IPresenter<V> {
     }
 
     override fun setUserAsLoggedOut() {
-        mDataManager?.setAccessToken(null)
+        mDataManager.setAccessToken(null)
     }
 
 }

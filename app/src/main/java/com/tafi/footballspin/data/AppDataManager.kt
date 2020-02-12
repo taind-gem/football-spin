@@ -17,8 +17,7 @@ import javax.inject.Inject
 class AppDataManager @Inject constructor(
     @ApplicationContext val context: Context,
     val mDbHelper: DbHelper,
-    var mPreferencesHelper: PreferencesHelper,
-    val mApiHelper: ApiHelper
+    val mPreferencesHelper: PreferencesHelper
 ) : DataManager {
 
     override fun setUserAsLoggedOut() {

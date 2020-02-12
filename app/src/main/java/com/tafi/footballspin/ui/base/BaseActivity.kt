@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
@@ -19,6 +20,7 @@ import com.tafi.footballspin.di.module.ActivityModule
 import com.tafi.footballspin.ui.login.LoginActivity
 import com.tafi.footballspin.utils.CommonUtils
 import com.tafi.footballspin.utils.NetworkUtils.isNetworkConnected
+import android.view.WindowManager
 
 /**
  * Created by taind-201 on 2/7/2020.
@@ -27,7 +29,7 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
 
     private var mProgressDialog: ProgressDialog? = null
 
-    var activityComponent: ActivityComponent? = null
+    lateinit var activityComponent: ActivityComponent
         private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +38,27 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
             .activityModule(ActivityModule(this))
             .applicationComponent((application as MainApp).getComponent())
             .build()
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            val w = window
+            w.setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            )
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val navBarHeight = getNavigationBarHeight()
+            findViewById<View>(android.R.id.content).rootView.setPadding(0, 0, 0, navBarHeight)
+        }
+    }
+
+    private fun getNavigationBarHeight(): Int {
+        val resources = resources
+        val resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android")
+        return if (resourceId > 0) {
+            resources.getDimensionPixelSize(resourceId)
+        } else 0
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -71,6 +94,7 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
     }
 
     private fun showSnackBar(message: String) {}
+
     override fun onError(@StringRes resId: Int) {
         onError(getString(resId))
     }

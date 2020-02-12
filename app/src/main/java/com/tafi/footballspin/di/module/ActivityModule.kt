@@ -6,6 +6,8 @@ import com.tafi.footballspin.di.ActivityContext
 import com.tafi.footballspin.di.PerActivity
 import com.tafi.footballspin.ui.login.ILoginView
 import com.tafi.footballspin.ui.login.LoginPresenter
+import com.tafi.footballspin.ui.splash.ISplashPresenter
+import com.tafi.footballspin.ui.splash.ISplashView
 import com.tafi.footballspin.utils.rx.AppSchedulerProvider
 import com.tafi.footballspin.utils.rx.SchedulerProvider
 import dagger.Module
@@ -40,9 +42,13 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
 
     @Provides
     @PerActivity
-    fun provideLoginPresenter(
-        presenter: LoginPresenter<ILoginView>
-    ): LoginPresenter<ILoginView> {
+    fun provideLoginPresenter(presenter: LoginPresenter<ILoginView>): LoginPresenter<ILoginView> {
+        return presenter
+    }
+
+    @Provides
+    @PerActivity
+    fun provideSplashPresenter(presenter: ISplashPresenter<ISplashView>): ISplashPresenter<ISplashView> {
         return presenter
     }
 

@@ -6,8 +6,11 @@ import com.tafi.footballspin.data.AppDataManager
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.data.db.AppDbHelper
 import com.tafi.footballspin.data.db.DbHelper
+import com.tafi.footballspin.data.prefs.AppPreferencesHelper
+import com.tafi.footballspin.data.prefs.PreferencesHelper
 import com.tafi.footballspin.di.ApplicationContext
 import com.tafi.footballspin.di.DatabaseInfo
+import com.tafi.footballspin.di.PreferenceInfo
 import com.tafi.footballspin.utils.AppConstants
 import dagger.Module
 import dagger.Provides
@@ -31,6 +34,12 @@ class ApplicationModule(private val mApplication: Application) {
     }
 
     @Provides
+    @PreferenceInfo
+    internal fun providePreferenceName(): String {
+        return AppConstants.PREF_NAME
+    }
+
+    @Provides
     @DatabaseInfo
     fun provideDatabaseName(): String {
         return AppConstants.DB_NAME
@@ -47,4 +56,11 @@ class ApplicationModule(private val mApplication: Application) {
     fun provideDataManager(appDataManager: AppDataManager): DataManager {
         return appDataManager
     }
+
+    @Provides
+    @Singleton
+    internal fun providePreferencesHelper(appPreferencesHelperHelper: AppPreferencesHelper): PreferencesHelper {
+        return appPreferencesHelperHelper
+    }
+
 }

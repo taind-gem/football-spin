@@ -6,7 +6,7 @@
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="default_text_color">#2E2E2E</color>
+    <color name="default_text_color">#DDDDDD</color>
     <color name="transparent">#00000000</color>
 
     <color name="fb">#3b5998</color>

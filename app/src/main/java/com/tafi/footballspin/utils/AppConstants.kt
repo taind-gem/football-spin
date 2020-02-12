@@ -5,6 +5,8 @@ package com.tafi.footballspin.utils
  */
 object AppConstants {
 
+    const val PREF_NAME = "football_spin_pref"
+
     const val DB_NAME = "football_spin.db"
 
     const val NULL_INDEX = -1L

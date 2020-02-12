@@ -1,7 +1,11 @@
-<resources>
+<resources
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="MissingTranslation">
+
     <string name="app_name">Football Spin</string>
     <string name="unknown_error">Unknown Error</string>
-    <string name="email">Email</string>
+    <string name="email" >Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="tafi2019">TAFI@2019\nAll rights reserved</string>
 </resources>
