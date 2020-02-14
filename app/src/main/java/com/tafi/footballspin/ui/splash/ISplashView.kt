@@ -4,6 +4,8 @@ import com.tafi.footballspin.ui.base.IView
 
 interface ISplashView : IView {
 
+    fun updateAppVersion()
+
     fun openLoginActivity()
 
     fun openMainActivity()

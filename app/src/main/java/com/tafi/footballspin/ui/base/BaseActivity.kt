@@ -34,6 +34,7 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         activityComponent = DaggerActivityComponent.builder()
             .activityModule(ActivityModule(this))
             .applicationComponent((application as MainApp).getComponent())
@@ -51,6 +52,11 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
             val navBarHeight = getNavigationBarHeight()
             findViewById<View>(android.R.id.content).rootView.setPadding(0, 0, 0, navBarHeight)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initView()
     }
 
     private fun getNavigationBarHeight(): Int {
@@ -131,5 +137,7 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
         startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
+
+    protected abstract fun initView()
 
 }

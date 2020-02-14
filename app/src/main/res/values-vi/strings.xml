@@ -3,4 +3,5 @@
     <string name="unknown_error">Lỗi không xác định</string>
     <string name="password">Mật khẩu</string>
     <string name="login">Đăng nhập</string>
+    <string name="version_s">Phiên bản: %s</string>
 </resources>

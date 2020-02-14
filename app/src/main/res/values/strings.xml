@@ -1,5 +1,4 @@
-<resources
-        xmlns:tools="http://schemas.android.com/tools"
+<resources xmlns:tools="http://schemas.android.com/tools"
         tools:ignore="MissingTranslation">
 
     <string name="app_name">Football Spin</string>
@@ -7,5 +6,12 @@
     <string name="email" >Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="tafi2019">TAFI@2019\nAll rights reserved</string>
+    <string name="version_s">Version: %s</string>
+
+
+    <string-array name="dummy">
+        <item>Pasta</item>
+        <item>Pizza</item>
+        <item>Chocolate</item>
+    </string-array>
 </resources>

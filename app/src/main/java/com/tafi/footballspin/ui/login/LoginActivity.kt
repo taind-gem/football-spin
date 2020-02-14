@@ -13,6 +13,8 @@ class LoginActivity : BaseActivity(), ILoginView {
         setContentView(R.layout.activity_login)
     }
 
+    override fun initView() {}
+
     override fun openMainActivity() {
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         finish()

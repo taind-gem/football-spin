@@ -1,5 +1,6 @@
 package com.tafi.footballspin.ui.splash
 
+import android.os.Handler
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.model.entity.LoggedInMode
 import com.tafi.footballspin.ui.base.BasePresenter
@@ -18,13 +19,16 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
 
         mView?.startSyncService()
 
-        mView?.openMainActivity()
+        Handler().postDelayed({
+            decideNextActivity()
+        }, 1500)
     }
 
 
-    private fun decideNextActivity() {
+    override fun decideNextActivity() {
         if (mDataManager.getCurrentUserLoggedInMode() == LoggedInMode.MODE_LOGGED_OUT.type) {
-            mView?.openLoginActivity()
+//            mView?.openLoginActivity()
+            mView?.openMainActivity()
         } else {
             mView?.openMainActivity()
         }

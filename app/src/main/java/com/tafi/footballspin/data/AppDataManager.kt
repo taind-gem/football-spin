@@ -3,7 +3,6 @@ package com.tafi.footballspin.data
 import android.content.Context
 import com.tafi.footballspin.data.db.DbHelper
 import com.tafi.footballspin.data.db.model.Match
-import com.tafi.footballspin.data.network.ApiHelper
 import com.tafi.footballspin.data.prefs.PreferencesHelper
 import com.tafi.footballspin.di.ApplicationContext
 import com.tafi.footballspin.model.entity.LoggedInMode
@@ -16,8 +15,8 @@ import javax.inject.Inject
 
 class AppDataManager @Inject constructor(
     @ApplicationContext val context: Context,
-    val mDbHelper: DbHelper,
-    val mPreferencesHelper: PreferencesHelper
+    private val mDbHelper: DbHelper,
+    private val mPreferencesHelper: PreferencesHelper
 ) : DataManager {
 
     override fun setUserAsLoggedOut() {
