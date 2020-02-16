@@ -2,8 +2,8 @@ package com.tafi.footballspin.data.prefs
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.tafi.footballspin.di.ApplicationContext
-import com.tafi.footballspin.di.PreferenceInfo
+import com.tafi.footballspin.di.scope.ApplicationContext
+import com.tafi.footballspin.di.scope.PreferenceInfo
 import com.tafi.footballspin.model.entity.LoggedInMode
 import com.tafi.footballspin.utils.AppConstants
 import javax.inject.Inject

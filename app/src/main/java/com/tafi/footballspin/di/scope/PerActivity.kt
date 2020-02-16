@@ -1,4 +1,4 @@
-package com.tafi.footballspin.di
+package com.tafi.footballspin.di.scope
 
 import javax.inject.Scope
 

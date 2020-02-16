@@ -14,13 +14,15 @@ open class BasePresenter<V : IView> @Inject constructor(
     open var mDataManager: DataManager,
     open var mSchedulerProvider: SchedulerProvider,
     open var mCompositeDisposable: CompositeDisposable
-): IPresenter<V> {
+) : IPresenter<V> {
 
     var mView: V? = null
 
     override fun onAttach(view: V) {
         mView = view
     }
+
+    fun isViewAttached() = mView != null
 
     override fun onDetach() {
         mCompositeDisposable.dispose()

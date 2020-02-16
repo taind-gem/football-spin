@@ -2,8 +2,8 @@ package com.tafi.footballspin.di.module
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import com.tafi.footballspin.di.ActivityContext
-import com.tafi.footballspin.di.PerActivity
+import com.tafi.footballspin.di.scope.ActivityContext
+import com.tafi.footballspin.di.scope.PerActivity
 import com.tafi.footballspin.ui.login.ILoginView
 import com.tafi.footballspin.ui.login.LoginPresenter
 import com.tafi.footballspin.ui.splash.ISplashPresenter

@@ -14,10 +14,10 @@ import androidx.annotation.ColorInt
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.tafi.footballspin.R
+import com.tafi.footballspin.model.Team
+import com.tafi.footballspin.utils.CommonUtils
 import com.tafi.footballspin.view.spinningwheel.WheelRotation.Companion.init
 import com.tafi.footballspin.view.spinningwheel.WheelRotation.RotationListener
-import java.lang.Exception
-import java.util.*
 
 class SpinningWheel : View, RotationListener {
     @ColorInt
@@ -342,14 +342,18 @@ class SpinningWheel : View, RotationListener {
         textPaint!!.color = wheelTextColor
         textPaint!!.textSize = wheelTextSize
         strokePaint = Paint()
-        strokePaint!!.style = Paint.Style.STROKE
-        strokePaint!!.color = wheelStrokeColor
-        strokePaint!!.strokeWidth = wheelStrokeWidth
-        strokePaint!!.strokeCap = Paint.Cap.ROUND
+        strokePaint?.apply {
+            style = Paint.Style.STROKE
+            color = wheelStrokeColor
+            strokeWidth = wheelStrokeWidth
+            strokeCap = Paint.Cap.ROUND
+        }
         trianglePaint = Paint()
-        trianglePaint!!.color = wheelArrowColor
-        trianglePaint!!.style = Paint.Style.FILL_AND_STROKE
-        trianglePaint!!.isAntiAlias = true
+        trianglePaint?.apply {
+            color = wheelArrowColor
+            style = Paint.Style.FILL_AND_STROKE
+            isAntiAlias = true
+        }
         itemPaint = Paint()
         itemPaint!!.style = Paint.Style.FILL
     }
@@ -423,10 +427,24 @@ class SpinningWheel : View, RotationListener {
         var angle = anglePerItem / 2
         for (i in 0 until itemSize) {
             val item = TextUtils
-                .ellipsize(items!![i].toString(), textPaint, textWidth, TextUtils.TruncateAt.END)
+                .ellipsize((items!![i] as Team).abbr, textPaint, textWidth, TextUtils.TruncateAt.END)
             canvas.save()
             canvas.rotate(angle + 180, cx, cy) // +180 for start from right
-            this.textPaint?.let { paint -> canvas.drawText(item.toString(), x, cy, paint) }
+            this.textPaint?.let { paint ->
+                paint.textSize = CommonUtils.spToPx(context, 20f).toFloat()
+                paint.color = ContextCompat.getColor(context, R.color.wheel_text_color)
+                paint.isAntiAlias = true
+                paint.style = Paint.Style.FILL
+                paint.isFakeBoldText = true
+
+                canvas.drawText(item.toString(), x, cy, paint)
+            }
+
+//            ContextCompat.getDrawable(context, R.drawable.chelsea)?.apply {
+//                setBounds(left, top, right, bottom)
+//                draw(canvas)
+//            }
+
             canvas.restore()
             angle += anglePerItem
         }

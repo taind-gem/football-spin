@@ -1,6 +1,6 @@
 package com.tafi.footballspin.ui.login
 
-import com.tafi.footballspin.di.PerActivity
+import com.tafi.footballspin.di.scope.PerActivity
 import com.tafi.footballspin.ui.base.IPresenter
 
 /**

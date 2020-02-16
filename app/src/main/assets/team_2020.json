@@ -1,0 +1,170 @@
+{
+  "club": [
+    {
+      "name": "Primera División 2019/20",
+      "code": "es",
+      "clubs": [
+        {
+          "key": "barcelona",
+          "name": "FC Barcelona",
+          "abbr": "Barca",
+          "code": "BAR",
+          "rate": 5
+        },
+        {
+          "key": "madrid",
+          "name": "Real Madrid",
+          "abbr": "Real",
+          "code": "RMD",
+          "rate": 5
+        },
+        {
+          "key": "atletico",
+          "name": "Atlético Madrid",
+          "abbr": "Atletico",
+          "code": "ATL",
+          "rate": 5
+        }
+      ]
+    },
+    {
+      "name": "English Premier League",
+      "code": "en",
+      "clubs": [
+        {
+          "key": "chelsea",
+          "name": "Chelsea FC",
+          "abbr": "Chelsea",
+          "code": "CHE",
+          "rate": 4
+        },
+        {
+          "key": "arsenal",
+          "name": "Arsenal FC",
+          "abbr": "Arsernal",
+          "code": "ARS",
+          "rate": 4
+        },
+        {
+          "key": "tottenham",
+          "name": "Tottenham Hotspur FC",
+          "abbr": "Tottenham",
+          "code": "TOT",
+          "rate": 5
+        },
+        {
+          "key": "manutd",
+          "name": "Manchester United FC",
+          "abbr": "MU",
+          "code": "MUN",
+          "rate": 4
+        },
+        {
+          "key": "mancity",
+          "name": "Manchester City FC",
+          "abbr": "Man City",
+          "code": "MCI",
+          "rate": 5
+        },
+        {
+          "key": "liverpool",
+          "name": "Liverpool FC",
+          "abbr": "Liverpool",
+          "code": "LIV",
+          "rate": 5
+        },
+        {
+          "key": "leicester",
+          "name": "Leicester City FC",
+          "abbr": "Leicester",
+          "code": "LEI",
+          "rate": 4
+        }
+      ]
+    },
+
+    {
+      "name": "Bundesliga",
+      "code": "de",
+      "clubs": [
+        {
+          "key": "bayern",
+          "name": "Bayern München",
+          "abbr": "Bayern",
+          "code": "FCB",
+          "rate": 5
+        },
+        {
+          "key": "dortmund",
+          "name": "Borussia Dortmund",
+          "abbr": "Dortmund",
+          "code": "BVB",
+          "rate": 5
+        }
+      ]
+    },{
+      "name": "Ligue 1",
+      "code": "fr",
+      "clubs": [
+        {
+          "key": "paris",
+          "name": "Paris Saint-Germain",
+          "abbr": "PSG",
+          "code": "PSG",
+          "rate": 5
+        },
+        {
+          "key": "marseille",
+          "name": "Olympique de Marseille",
+          "abbr": "Marseille",
+          "code": "OM",
+          "rate": 4
+        }
+      ]
+    },
+    {
+      "name": "Serie A",
+      "code": "it",
+      "clubs": [
+        {
+          "key": "milan",
+          "name": "AC Milan",
+          "abbr": "AC",
+          "code": "MIL",
+          "rate": 4
+        },
+
+        {
+          "key": "inter",
+          "name": "Inter Milan",
+          "abbr": "Inter",
+          "code": "INT"
+        },
+        {
+          "key": "juventus",
+          "name": "Juventus",
+          "abbr": "Juventus",
+          "code": "JUV",
+          "rate": 5
+        },
+        {
+          "key": "napoli",
+          "name": "Napoli",
+          "abbr": "Napoli",
+          "code": "NAP",
+          "rate": 4
+        },
+
+        {
+          "key": "roma",
+          "name": "AS Roma",
+          "abbr": "Roma",
+          "code": "ROM",
+          "rate": 4
+        }
+      ]
+    }
+  ],
+  "nation": [
+  ]
+}

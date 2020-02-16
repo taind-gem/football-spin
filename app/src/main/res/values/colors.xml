@@ -6,6 +6,9 @@
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="red">#960000</color>
+    <color name="yellow">#FFFF00</color>
+
     <color name="default_text_color">#DDDDDD</color>
     <color name="transparent">#00000000</color>
 
@@ -19,6 +22,9 @@
     <color name="rainbowDashYellow">#FDF498</color>
     <color name="rainbowDashGreen">#7BC043</color>
     <color name="rainbowDashBlue">#0392CF</color>
+
+    <color name="wheel_stroke_color">#22FFFFFF</color>
+    <color name="wheel_text_color">#FFFFFF</color>
 
     <string-array name="rainbow_dash">
         <item>@color/rainbowDashRed</item>

@@ -1,5 +1,6 @@
 package com.tafi.footballspin.ui.main
 
+import com.tafi.footballspin.model.League
 import com.tafi.footballspin.ui.base.IView
 
 /**
@@ -7,6 +8,8 @@ import com.tafi.footballspin.ui.base.IView
  */
 
 interface IMainView : IView {
+
+    fun onLoadDataSuccess(listLeague: List<League>)
 
     fun spinWheel()
 

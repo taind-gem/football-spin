@@ -1,4 +1,4 @@
-package com.tafi.footballspin.di;
+package com.tafi.footballspin.di.scope;
 
 import javax.inject.Qualifier;
 import java.lang.annotation.Retention;

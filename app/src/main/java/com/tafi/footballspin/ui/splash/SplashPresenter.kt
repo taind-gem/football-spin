@@ -21,7 +21,7 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
 
         Handler().postDelayed({
             decideNextActivity()
-        }, 1500)
+        }, 1000)
     }
 
 

@@ -3,8 +3,10 @@ package com.tafi.footballspin.data
 import android.content.Context
 import com.tafi.footballspin.data.db.DbHelper
 import com.tafi.footballspin.data.db.model.Match
+import com.tafi.footballspin.data.local.LocalHelper
 import com.tafi.footballspin.data.prefs.PreferencesHelper
-import com.tafi.footballspin.di.ApplicationContext
+import com.tafi.footballspin.di.scope.ApplicationContext
+import com.tafi.footballspin.model.League
 import com.tafi.footballspin.model.entity.LoggedInMode
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -16,8 +18,13 @@ import javax.inject.Inject
 class AppDataManager @Inject constructor(
     @ApplicationContext val context: Context,
     private val mDbHelper: DbHelper,
+    private val mLocalHelper: LocalHelper,
     private val mPreferencesHelper: PreferencesHelper
 ) : DataManager {
+
+    override fun getAllTeamFromAssets(): Observable<List<League>> {
+        return mLocalHelper.getAllTeamFromAssets()
+    }
 
     override fun setUserAsLoggedOut() {
         updateUserInfo(

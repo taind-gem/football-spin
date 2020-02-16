@@ -5,6 +5,8 @@ package com.tafi.footballspin.utils
  */
 object AppConstants {
 
+    const val ALL_TEAM_FILE_NAME = "team_2020.json"
+
     const val PREF_NAME = "football_spin_pref"
 
     const val DB_NAME = "football_spin.db"

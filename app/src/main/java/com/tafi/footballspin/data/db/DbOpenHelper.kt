@@ -2,8 +2,8 @@ package com.tafi.footballspin.data.db
 
 import android.content.Context
 import com.tafi.footballspin.data.db.model.DaoMaster.OpenHelper
-import com.tafi.footballspin.di.ApplicationContext
-import com.tafi.footballspin.di.DatabaseInfo
+import com.tafi.footballspin.di.scope.ApplicationContext
+import com.tafi.footballspin.di.scope.DatabaseInfo
 import org.greenrobot.greendao.database.Database
 import timber.log.Timber
 import javax.inject.Inject

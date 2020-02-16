@@ -1,6 +1,6 @@
 package com.tafi.footballspin.di.component
 
-import com.tafi.footballspin.di.PerActivity
+import com.tafi.footballspin.di.scope.PerActivity
 import com.tafi.footballspin.di.module.ActivityModule
 import com.tafi.footballspin.ui.main.MainActivity
 import com.tafi.footballspin.ui.splash.SplashActivity

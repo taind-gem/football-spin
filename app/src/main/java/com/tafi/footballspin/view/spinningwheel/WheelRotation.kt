@@ -4,12 +4,13 @@ import android.os.CountDownTimer
 
 internal class WheelRotation(millisInFuture: Long, countDownInterval: Long) :
     CountDownTimer(millisInFuture, countDownInterval) {
-    private val ROTATE_SCALE_FACTOR = 2f
+
     private var maxAngle = 0f
     private var angle = 1f
     private val thresholdSlow: Long
     private var rotationListener: RotationListener? = null
     private val duration: Long
+
     fun setMaxAngle(maxAngle: Float): WheelRotation {
         this.maxAngle = maxAngle
         return this
@@ -51,20 +52,22 @@ internal class WheelRotation(millisInFuture: Long, countDownInterval: Long) :
     }
 
     companion object {
+        private const val ROTATE_SCALE_FACTOR = 2f
         private const val SLOW_FACTOR = 2f / 3f
+
+        /**
+         * @param millisInFuture    The number of millis in the future from the call
+         * to [.start] until the countdown is done and [.onFinish]
+         * is called.
+         * @param countDownInterval The interval along the way to receive
+         * [.onTick] callbacks.
+         */
         @JvmStatic
         fun init(millisInFuture: Long, countDownInterval: Long): WheelRotation {
             return WheelRotation(millisInFuture, countDownInterval)
         }
     }
 
-    /**
-     * @param millisInFuture    The number of millis in the future from the call
-     * to [.start] until the countdown is done and [.onFinish]
-     * is called.
-     * @param countDownInterval The interval along the way to receive
-     * [.onTick] callbacks.
-     */
     init {
         thresholdSlow = (millisInFuture * SLOW_FACTOR).toLong()
         duration = millisInFuture
