@@ -21,22 +21,27 @@
                 android:layout_marginBottom="40dp"
                 android:orientation="vertical">
 
-            <EditText android:layout_width="match_parent"
+            <EditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
                       android:layout_height="50dp"
                       android:hint="@string/email"
                       android:layout_marginBottom="8dp"/>
 
-            <EditText android:layout_width="match_parent"
+            <EditText
+                    android:id="@+id/edtPassword"
+                    android:layout_width="match_parent"
                       android:layout_height="50dp"
                       android:hint="@string/password"/>
 
             <Button
-                    android:id="@+id/btn_server_login"
+                    android:id="@+id/btnServerLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
                     android:padding="10dp"
+                    android:background="@color/colorAccent"
                     android:text="@string/login"
                     android:textSize="18sp"/>
         </LinearLayout>

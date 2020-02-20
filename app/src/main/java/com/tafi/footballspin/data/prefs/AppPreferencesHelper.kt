@@ -17,7 +17,7 @@ class AppPreferencesHelper @Inject constructor(
     @PreferenceInfo val prefFileName: String
 ) : PreferencesHelper {
 
-    var mPrefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
+    private var mPrefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
     override fun getCurrentUserLoggedInMode(): Int {
         return mPrefs.getInt(PREF_KEY_USER_LOGGED_IN_MODE, LoggedInMode.MODE_LOGGED_OUT.type)

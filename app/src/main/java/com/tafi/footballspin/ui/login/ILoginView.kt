@@ -7,5 +7,7 @@ import com.tafi.footballspin.ui.base.IView
  */
 
 interface ILoginView : IView {
+
     fun openMainActivity()
+
 }

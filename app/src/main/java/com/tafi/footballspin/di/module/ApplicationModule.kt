@@ -8,6 +8,8 @@ import com.tafi.footballspin.data.db.AppDbHelper
 import com.tafi.footballspin.data.db.DbHelper
 import com.tafi.footballspin.data.local.AppLocalHelper
 import com.tafi.footballspin.data.local.LocalHelper
+import com.tafi.footballspin.network.ApiHelper
+import com.tafi.footballspin.network.NetworkManager
 import com.tafi.footballspin.data.prefs.AppPreferencesHelper
 import com.tafi.footballspin.data.prefs.PreferencesHelper
 import com.tafi.footballspin.di.scope.ApplicationContext
@@ -71,4 +73,9 @@ class ApplicationModule(private val mApplication: Application) {
         return appPreferencesHelperHelper
     }
 
+    @Provides
+    @Singleton
+    fun provideApiHelper(appApiHelper: NetworkManager): ApiHelper {
+        return appApiHelper
+    }
 }

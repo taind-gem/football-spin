@@ -5,4 +5,9 @@
     <string name="login">Đăng nhập</string>
     <string name="version_s">Phiên bản: %s</string>
     <string name="spin">Xoay</string>
+
+    <string name="empty_email">Please provide a non empty email.</string>
+    <string name="invalid_email">Please provide a valid email.</string>
+    <string name="empty_password">Please provide a non empty password.</string>
+
 </resources>

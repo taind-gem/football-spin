@@ -1,6 +1,5 @@
 package com.tafi.footballspin.di.component;
 
-import android.app.Application;
 import android.content.Context;
 import com.tafi.footballspin.MainApp;
 import com.tafi.footballspin.data.DataManager;
@@ -23,7 +22,6 @@ public interface ApplicationComponent {
     @ApplicationContext
     Context context();
 
-    Application application();
-
     DataManager getDataManager();
+
 }

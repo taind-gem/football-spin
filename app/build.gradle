@@ -40,6 +40,11 @@ android {
         generateStubs = true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     applicationVariants.all { variant ->
         if (variant.buildType.name == 'debug') {
             variant.outputs.all { output ->
@@ -80,6 +85,10 @@ dependencies {
 
     implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3Version"
 
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
