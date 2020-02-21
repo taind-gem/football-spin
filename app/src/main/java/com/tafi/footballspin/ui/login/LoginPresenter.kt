@@ -1,6 +1,5 @@
 package com.tafi.footballspin.ui.login
 
-import android.app.Activity
 import com.tafi.footballspin.R
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.model.entity.LoggedInMode

@@ -11,5 +11,6 @@ data class Team (
     val abbr: String,
     val code: String,
     var league_code: String,
+    var league_name: String,
     val rate: Float
 ) : Serializable

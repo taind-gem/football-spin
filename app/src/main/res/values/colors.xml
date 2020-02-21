@@ -15,15 +15,13 @@
     <color name="fb">#4267B2</color>
     <color name="google">#db4a39</color>
 
-
-
     <color name="rainbowDashRed">#EE4035</color>
     <color name="rainbowDashPeach">#F37736</color>
     <color name="rainbowDashYellow">#FDF498</color>
     <color name="rainbowDashGreen">#7BC043</color>
     <color name="rainbowDashBlue">#0392CF</color>
 
-    <color name="wheel_stroke_color">#5BD1D1D1</color>
+    <color name="wheel_stroke_color">#55D1D1D1</color>
     <color name="wheel_text_color">#FFFFFF</color>
 
     <string-array name="rainbow_dash">

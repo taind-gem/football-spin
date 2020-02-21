@@ -10,12 +10,17 @@ import android.provider.Settings;
 import android.util.TypedValue;
 import com.tafi.footballspin.R;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -80,5 +85,24 @@ public final class CommonUtils {
 
     public static int dpToPx(Context context, float dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+    }
+
+    @NotNull
+    public static int[] generateRandomColorList(Integer size) {
+        int[] colors = new int[size];
+
+        Random random = new Random();
+        for (int i = 0; i < size; i++ ) {
+            int R = random.nextInt(255);
+            int B = random.nextInt(255);
+            int G = random.nextInt(255);
+
+            R = (R << 16) & 0x00FF0000;
+            G = (G << 8) & 0x0000FF00;
+            B = B & 0x000000FF;
+
+            colors[i] = 0xFF000000 | R | G | B;
+        }
+        return colors;
     }
 }

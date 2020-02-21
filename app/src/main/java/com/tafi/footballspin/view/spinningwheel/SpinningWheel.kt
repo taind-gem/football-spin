@@ -121,6 +121,7 @@ class SpinningWheel : View, RotationListener {
 
     override fun onRotate(angle: Float) {
         rotate(angle)
+        onRotationListener!!.onRotation(getSelectedItem())
     }
 
     override fun onStop() {
@@ -130,12 +131,11 @@ class SpinningWheel : View, RotationListener {
 
     // angle mod 360 prevent to big angle, and overflow float
     // rotate without animation
-    fun rotate(angle: Float) {
+    private fun rotate(angle: Float) {
         this.angle += angle
         this.angle %= ANGLE
         invalidate()
         if (onRotationListenerTicket && angle != 0f && onRotationListener != null) {
-            onRotationListener!!.onRotation()
             onRotationListenerTicket = false
         }
     }
@@ -262,6 +262,7 @@ class SpinningWheel : View, RotationListener {
 
     fun setItems(items: MutableList<*>?) {
         this.items = items
+        setColors(CommonUtils.generateRandomColorList(items?.size))
         initPoints()
         invalidate()
     }
@@ -278,7 +279,7 @@ class SpinningWheel : View, RotationListener {
         setItems(items)
     }
 
-    fun <T> getSelectedItem(): T? {
+    private fun <T> getSelectedItem(): T? {
         if (circle == null || points == null) {
             return null
         }
@@ -297,7 +298,7 @@ class SpinningWheel : View, RotationListener {
             return
         }
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SpinningWheel, 0, 0)
-        try { // init colors
+        try {
             val colorsResId = typedArray.getResourceId(R.styleable.SpinningWheel_wheel_colors, 0)
             setColors(colorsResId)
             val wheelStrokeColor = typedArray.getColor(
@@ -370,7 +371,7 @@ class SpinningWheel : View, RotationListener {
     }
 
     private fun initPoints() {
-        if (items != null && !items!!.isEmpty()) {
+        if (items != null && items!!.isNotEmpty()) {
             points = arrayOfNulls(items!!.size)
         }
     }
@@ -439,24 +440,9 @@ class SpinningWheel : View, RotationListener {
 
                 canvas.drawText(item.toString(), x, cy, paint)
             }
-
-//            ContextCompat.getDrawable(context, R.drawable.chelsea)?.apply {
-//                setBounds(left, top, right, bottom)
-//                draw(canvas)
-//            }
-
             canvas.restore()
             angle += anglePerItem
         }
-    }
-
-    private fun drawTriangle(canvas: Canvas) { // Prepare Point
-        val cx = circle!!.cx
-        val cy = circle!!.cy
-        val radius = circle!!.radius
-        // Handle triangle not following the rotation
-        canvas.rotate(-angle, cx, cy)
-        drawTriangle(canvas, trianglePaint, cx, cy - radius, wheelArrowWidth, wheelArrowHeight)
     }
 
     private fun drawTriangle(
@@ -479,12 +465,7 @@ class SpinningWheel : View, RotationListener {
     }
 
     private fun getItemPaint(position: Int): Paint? {
-        var i = position % colors.size
-        // if start color == end color, get middle color
-        if (itemSize - 1 == position && position % colors.size == 0) {
-            i = colors.size / 2
-        }
-        itemPaint!!.color = colors[i]
+        itemPaint!!.color = colors[position]
         return itemPaint
     }
 
@@ -504,7 +485,7 @@ class SpinningWheel : View, RotationListener {
     }
 
     interface OnRotationListener<T> {
-        fun onRotation()
+        fun onRotation(item: T?)
         fun onStopRotation(item: T?)
     }
 

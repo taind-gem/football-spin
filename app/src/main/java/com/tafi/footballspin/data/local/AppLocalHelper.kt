@@ -36,6 +36,7 @@ class AppLocalHelper @Inject constructor(
                 for (league in allLeague) {
                     for (club in league.clubs!!) {
                         club.league_code = league.code
+                        club.league_name = league.name
                     }
                     league.type = key
                 }

@@ -7,6 +7,16 @@
         android:layout_height="match_parent"
         tools:context=".ui.main.MainActivity">
 
+    <View
+            android:id="@+id/layout_team"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginTop="48dp"
+            android:background="#6699CAFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     <com.tafi.footballspin.view.spinningwheel.SpinningWheel
             android:id="@+id/wheel"
             android:layout_width="0dp"
@@ -20,7 +30,7 @@
             app:layout_constraintWidth_percent="0.85"
             app:wheel_colors="@array/rainbow_dash"
             app:wheel_stroke_color="@color/wheel_stroke_color"
-            app:wheel_stroke_width="12dp" />
+            app:wheel_stroke_width="8dp" />
 
     <Button
             android:id="@+id/rotate"
@@ -35,20 +45,11 @@
             app:layout_constraintStart_toStartOf="@+id/wheel"
             app:layout_constraintTop_toTopOf="@+id/wheel" />
 
-    <View
-            android:id="@+id/layout_team"
-            android:layout_width="wrap_content"
-            android:layout_height="70dp"
-            android:layout_marginTop="48dp"
-            android:background="#6699CAFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
             android:id="@+id/img_team_logo"
             android:layout_width="110dp"
             android:layout_height="110dp"
+            android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/layout_team"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/textView"
@@ -57,9 +58,32 @@
             app:srcCompat="@drawable/chelsea" />
 
     <ImageView
-            android:id="@+id/img_team_logo2"
+            android:id="@+id/img_arrow_left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:padding="3dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_team"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/layout_team"
+            app:srcCompat="@drawable/ic_arrow_left" />
+
+    <ImageView
+            android:id="@+id/img_arrow_right"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:padding="3dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_team"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/layout_team"
+            app:srcCompat="@drawable/ic_arrow_right_disable" />
+
+    <ImageView
+            android:id="@+id/img_team_logo_2"
             android:layout_width="110dp"
             android:layout_height="110dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/layout_team"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,9 +96,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Chelsea"
+            android:text="Chelsea FC"
             android:textColor="#FFE600"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/img_team_logo"
             app:layout_constraintStart_toStartOf="@+id/img_team_logo"
@@ -86,10 +110,10 @@
             android:layout_height="wrap_content"
             android:text="Bayern Munich"
             android:textColor="#FFE600"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/img_team_logo2"
-            app:layout_constraintStart_toStartOf="@+id/img_team_logo2"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_logo_2"
+            app:layout_constraintStart_toStartOf="@+id/img_team_logo_2"
             app:layout_constraintTop_toTopOf="@+id/tv_team_name_1" />
 
     <TextView
@@ -106,7 +130,7 @@
             android:id="@+id/tv_region_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Premier League"
+            android:text="Laliga"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_team_name_2"
             app:layout_constraintStart_toStartOf="@+id/tv_team_name_2"
@@ -116,7 +140,10 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="vs"
+            android:layout_marginBottom="4dp"
+            android:includeFontPadding="false"
+            android:text="@string/vs"
+            android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="@+id/layout_team"
             app:layout_constraintEnd_toEndOf="parent"
