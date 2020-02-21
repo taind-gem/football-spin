@@ -2,11 +2,17 @@ package com.tafi.footballspin.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import com.tafi.footballspin.R
 import com.tafi.footballspin.ui.base.BaseActivity
 import com.tafi.footballspin.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
+
+/**
+ * Created by taind-201 on 2/7/2020.
+ */
 
 class LoginActivity : BaseActivity(), ILoginView {
 
@@ -23,6 +29,18 @@ class LoginActivity : BaseActivity(), ILoginView {
     }
 
     override fun initView() {
+        val view = window.decorView.findViewById<View>(android.R.id.content)
+        hideKeyboardWhenClickOutsideEdittext(view)
+
+        edtPassword.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_GO) {
+                btnServerLogin.performClick()
+                true
+            } else {
+                false
+            }
+        }
+
         btnServerLogin.setOnClickListener {
             mPresenter.onServerLoginClick(
                 edtEmail.text.toString(),
@@ -40,4 +58,5 @@ class LoginActivity : BaseActivity(), ILoginView {
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         finish()
     }
+
 }

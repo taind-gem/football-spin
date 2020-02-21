@@ -9,7 +9,17 @@ import com.google.gson.annotations.SerializedName
 data class LoginResponse(
 
     @SerializedName("status_code")
-    var statusCode: String? = null,
+    var statusCode: Int? = null,
+
+    @SerializedName("message")
+    val message: String? = null,
+
+    @SerializedName("profile")
+    val profile: ProfileResponse? = null
+
+)
+
+data class ProfileResponse(
 
     @SerializedName("user_id")
     val userId: Long? = null,
@@ -30,9 +40,6 @@ data class LoginResponse(
     val fbProfilePicUrl: String? = null,
 
     @SerializedName("google_profile_pic_url")
-    val googleProfilePicUrl: String? = null,
-
-    @SerializedName("message")
-    val message: String? = null
+    val googleProfilePicUrl: String? = null
 
 )

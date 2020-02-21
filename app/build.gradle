@@ -23,12 +23,12 @@ android {
             debuggable = true
             applicationIdSuffix = ".develop"
             versionNameSuffix = "d"
-            resValue("string", "base_url", "https://www.bbt757.com")
+            resValue("string", "base_url", "https://empty-wind-5693.getsandbox.com/")
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            resValue("string", "base_url", "https://www.bbt757.com")
+            resValue("string", "base_url", "https://empty-wind-5693.getsandbox.com/")
         }
     }
 
@@ -87,7 +87,9 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
 
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3Version"
 
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"

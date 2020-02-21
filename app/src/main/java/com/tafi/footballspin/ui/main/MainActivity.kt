@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), IMainView, SpinningWheel.OnRotationListener<Team?> {
+
     @Inject
     lateinit var mPresenter: MainPresenter<IMainView>
 

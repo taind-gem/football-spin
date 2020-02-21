@@ -1,9 +1,10 @@
 package com.tafi.footballspin.ui.login
 
+import android.app.Activity
 import com.tafi.footballspin.R
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.model.entity.LoggedInMode
-import com.tafi.footballspin.network.NetworkManager
+import com.tafi.footballspin.network.AppNetworkManager
 import com.tafi.footballspin.network.request.LoginRequest
 import com.tafi.footballspin.ui.base.BasePresenter
 import com.tafi.footballspin.utils.CommonUtils
@@ -18,10 +19,10 @@ import javax.inject.Inject
 
 class LoginPresenter<V : ILoginView> @Inject constructor(
     override var mDataManager: DataManager,
-    override var mNetworkManager: NetworkManager,
+    override var mAppNetworkManager: AppNetworkManager,
     override var mSchedulerProvider: SchedulerProvider,
     override var mCompositeDisposable: CompositeDisposable
-) : BasePresenter<V>(mDataManager, mNetworkManager, mSchedulerProvider, mCompositeDisposable),
+) : BasePresenter<V>(mDataManager, mAppNetworkManager, mSchedulerProvider, mCompositeDisposable),
     ILoginPresenter<V> {
 
     override fun onServerLoginClick(email: String?, password: String?) {
@@ -41,37 +42,42 @@ class LoginPresenter<V : ILoginView> @Inject constructor(
         mView?.showLoading()
 
         mCompositeDisposable.add(
-            mNetworkManager
+            mAppNetworkManager
                 .doServerLoginApiCall(LoginRequest.ServerLoginRequest(email, password))
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe(
                     { response ->
-                        mDataManager.updateUserInfo(
-                            response.accessToken,
-                            response.userId,
-                            LoggedInMode.MODE_SERVER,
-                            response.userName,
-                            response.userEmail,
-                            response.serverProfilePicUrl
-                        )
-
-                        if (!isViewAttached()) {
-                            return@subscribe
-                        }
-
+                        Timber.i(response.toString())
+                        if (!isViewAttached()) return@subscribe
                         mView?.hideLoading()
-                        mView?.openMainActivity()
+
+                        when (response.statusCode) {
+                            200 -> {
+                                response.profile?.let { profile ->
+                                    mDataManager.updateUserInfo(
+                                        profile.accessToken,
+                                        profile.userId,
+                                        LoggedInMode.MODE_SERVER,
+                                        profile.userName,
+                                        profile.userEmail,
+                                        profile.serverProfilePicUrl
+                                    )
+                                }
+                                mView?.openMainActivity()
+                            }
+                            else -> {
+                                mView?.onError("[ERR" + response.statusCode + "] " + response.message)
+                            }
+                        }
 
                     },
                     { throwable ->
-                        if (!isViewAttached()) {
-                            return@subscribe
-                        }
+                        Timber.e(throwable)
+                        if (!isViewAttached()) return@subscribe
 
                         mView?.hideLoading()
                         mView?.onError(throwable.message)
-                        Timber.e(throwable)
 
                     }
                 )

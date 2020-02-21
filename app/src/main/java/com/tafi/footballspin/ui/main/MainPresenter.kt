@@ -2,7 +2,7 @@ package com.tafi.footballspin.ui.main
 
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.model.League
-import com.tafi.footballspin.network.NetworkManager
+import com.tafi.footballspin.network.AppNetworkManager
 import com.tafi.footballspin.ui.base.BasePresenter
 import com.tafi.footballspin.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
@@ -15,10 +15,10 @@ import javax.inject.Inject
 
 class MainPresenter<V : IMainView> @Inject constructor(
     override var mDataManager: DataManager,
-    override var mNetworkManager: NetworkManager,
+    override var mAppNetworkManager: AppNetworkManager,
     override var mSchedulerProvider: SchedulerProvider,
     override var mCompositeDisposable: CompositeDisposable
-) : BasePresenter<V>(mDataManager, mNetworkManager, mSchedulerProvider, mCompositeDisposable), IMainPresenter<V> {
+) : BasePresenter<V>(mDataManager, mAppNetworkManager, mSchedulerProvider, mCompositeDisposable), IMainPresenter<V> {
 
     override fun onViewInitialized() {
         mCompositeDisposable.add(

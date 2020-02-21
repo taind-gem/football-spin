@@ -85,7 +85,7 @@ class SpinningWheel : View, RotationListener {
         drawCircle(canvas)
         drawWheel(canvas)
         drawWheelItems(canvas)
-        drawTriangle(canvas)
+//        drawTriangle(canvas)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {

@@ -1,6 +1,7 @@
 package com.tafi.footballspin.ui.base
 
 import android.annotation.TargetApi
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -8,7 +9,10 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -20,11 +24,12 @@ import com.tafi.footballspin.di.module.ActivityModule
 import com.tafi.footballspin.ui.login.LoginActivity
 import com.tafi.footballspin.utils.CommonUtils
 import com.tafi.footballspin.utils.NetworkUtils.isNetworkConnected
-import android.view.WindowManager
+
 
 /**
  * Created by taind-201 on 2/7/2020.
  */
+
 abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback {
 
     private var mProgressDialog: ProgressDialog? = null
@@ -68,14 +73,14 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    fun requestPermissionsSafely(permissions: Array<String?>?, requestCode: Int) {
+    fun requestPermissionsSafely(permissions: Array<String>, requestCode: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(permissions, requestCode)
         }
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    fun hasPermission(permission: String?): Boolean {
+    fun hasPermission(permission: String): Boolean {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
                 checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
     }
@@ -93,13 +98,19 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
 
     override fun onError(message: String?) {
         if (message != null) {
-            showSnackBar(message)
+            showDialog(message)
         } else {
-            showSnackBar(getString(R.string.unknown_error))
+            showDialog(getString(R.string.unknown_error))
         }
     }
 
-    private fun showSnackBar(message: String) {}
+    private fun showDialog(message: String) {
+        AlertDialog.Builder(this)
+            .setMessage(message)
+            .setPositiveButton(
+                R.string.ok, null)
+            .show()
+    }
 
     override fun onError(@StringRes resId: Int) {
         onError(getString(resId))
@@ -132,6 +143,23 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
             imm.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
+
+    override fun hideKeyboardWhenClickOutsideEdittext(view: View) {
+        if (view !is EditText) {
+            view.setOnTouchListener { _, _ ->
+                hideKeyboard()
+                false
+            }
+        }
+
+        if (view is ViewGroup) {
+            for (i in 0 until view.childCount) {
+                val innerView = view.getChildAt(i)
+                hideKeyboardWhenClickOutsideEdittext(innerView)
+            }
+        }
+    }
+
 
     override fun openActivityOnTokenExpire() {
         startActivity(Intent(this, LoginActivity::class.java))

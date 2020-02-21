@@ -1,5 +1,6 @@
 package com.tafi.footballspin.ui.base
 
+import android.view.View
 import androidx.annotation.StringRes
 
 /**
@@ -25,5 +26,7 @@ interface IView {
     fun showMessage(@StringRes resId: Int)
 
     fun hideKeyboard()
+
+    fun hideKeyboardWhenClickOutsideEdittext(view: View)
 
 }

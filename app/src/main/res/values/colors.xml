@@ -12,8 +12,8 @@
     <color name="default_text_color">#DDDDDD</color>
     <color name="transparent">#00000000</color>
 
-    <color name="fb">#3b5998</color>
-    <color name="google">#d34836</color>
+    <color name="fb">#4267B2</color>
+    <color name="google">#db4a39</color>
 
 
 
@@ -23,7 +23,7 @@
     <color name="rainbowDashGreen">#7BC043</color>
     <color name="rainbowDashBlue">#0392CF</color>
 
-    <color name="wheel_stroke_color">#22FFFFFF</color>
+    <color name="wheel_stroke_color">#5BD1D1D1</color>
     <color name="wheel_text_color">#FFFFFF</color>
 
     <string-array name="rainbow_dash">

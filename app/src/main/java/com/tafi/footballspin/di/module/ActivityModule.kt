@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import com.tafi.footballspin.di.scope.ActivityContext
 import com.tafi.footballspin.di.scope.PerActivity
+import com.tafi.footballspin.ui.login.ILoginPresenter
 import com.tafi.footballspin.ui.login.ILoginView
 import com.tafi.footballspin.ui.login.LoginPresenter
 import com.tafi.footballspin.ui.main.IMainPresenter
@@ -47,7 +48,7 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
 
     @Provides
     @PerActivity
-    fun provideLoginPresenter(presenter: LoginPresenter<ILoginView>): LoginPresenter<ILoginView> {
+    fun provideLoginPresenter(presenter: LoginPresenter<ILoginView>): ILoginPresenter<ILoginView> {
         return presenter
     }
 

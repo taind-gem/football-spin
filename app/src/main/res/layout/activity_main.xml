@@ -11,77 +11,116 @@
             android:id="@+id/wheel"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_centerInParent="true"
             app:layout_constraintDimensionRatio="1:1"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="36dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintWidth_percent="0.8"
-            app:wheel_arrow_color="@color/yellow"
-            app:wheel_arrow_height="60dp"
-            app:wheel_arrow_width="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_region_1"
+            app:layout_constraintWidth_percent="0.85"
             app:wheel_colors="@array/rainbow_dash"
             app:wheel_stroke_color="@color/wheel_stroke_color"
-            app:wheel_stroke_width="12dp"
-            android:layout_marginTop="56dp"
-            app:layout_constraintTop_toBottomOf="@+id/layout_team"/>
+            app:wheel_stroke_width="12dp" />
 
     <Button
             android:id="@+id/rotate"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:text="@string/spin"
-            android:paddingEnd="32dp"
-            android:paddingStart="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wheel"
-            android:layout_marginTop="32dp"/>
+            android:gravity="center"
+            android:background="@drawable/ic_pin"
+            app:layout_constraintBottom_toBottomOf="@+id/wheel"
+            app:layout_constraintEnd_toEndOf="@+id/wheel"
+            app:layout_constraintStart_toStartOf="@+id/wheel"
+            app:layout_constraintTop_toTopOf="@+id/wheel" />
 
     <View
             android:id="@+id/layout_team"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="48dp"
             android:background="#6699CAFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="48dp"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
             android:id="@+id/img_team_logo"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_marginStart="42dp"
-            android:background="@color/white"
-            android:padding="5px"
             app:layout_constraintBottom_toBottomOf="@+id/layout_team"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/layout_team"
             app:srcCompat="@drawable/chelsea" />
 
+    <ImageView
+            android:id="@+id/img_team_logo2"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_team"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/layout_team"
+            app:srcCompat="@drawable/bayern" />
+
     <TextView
-            android:id="@+id/tv_team_name"
+            android:id="@+id/tv_team_name_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="Chelsea"
             android:textColor="#FFE600"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/img_team_logo"
-            app:layout_constraintTop_toTopOf="@+id/layout_team" />
+            app:layout_constraintEnd_toEndOf="@+id/img_team_logo"
+            app:layout_constraintStart_toStartOf="@+id/img_team_logo"
+            app:layout_constraintTop_toBottomOf="@+id/img_team_logo" />
 
     <TextView
-            android:id="@+id/tv_region"
+            android:id="@+id/tv_team_name_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bayern Munich"
+            android:textColor="#FFE600"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_logo2"
+            app:layout_constraintStart_toStartOf="@+id/img_team_logo2"
+            app:layout_constraintTop_toTopOf="@+id/tv_team_name_1" />
+
+    <TextView
+            android:id="@+id/tv_region_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Premier League"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/tv_team_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_team_name" />
+            app:layout_constraintEnd_toEndOf="@+id/tv_team_name_1"
+            app:layout_constraintStart_toStartOf="@+id/tv_team_name_1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_team_name_1" />
+
+    <TextView
+            android:id="@+id/tv_region_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Premier League"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_team_name_2"
+            app:layout_constraintStart_toStartOf="@+id/tv_team_name_2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_team_name_2" />
+
+    <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vs"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_team"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/layout_team"
+            app:layout_constraintTop_toTopOf="@+id/layout_team" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
