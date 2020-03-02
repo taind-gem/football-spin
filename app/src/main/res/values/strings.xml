@@ -1,9 +1,8 @@
-<resources xmlns:tools="http://schemas.android.com/tools"
-        tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <string name="app_name">Football Spin</string>
     <string name="unknown_error">Unknown Error</string>
-    <string name="email" >Email</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="version_s">Version: %s</string>
@@ -20,4 +19,21 @@
         <item>Pizza</item>
         <item>Chocolate</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="fragment_home">Home</string>
+    <string name="fragment_result">Result</string>
+    <string name="fragment_settings">Settings</string>
+    <string name="choose_team">Choose Team</string>
+    <string name="recent_match">Recent Match</string>
+    <string name="join_players">Các hảo thủ tham gia</string>
+    <string name="no_player_content">Hãy thêm người chơi để bắt đầu</string>
+    <string name="add_new_player">Add New Player</string>
+    <string name="start">Start</string>
+    <string name="username">Username</string>
+    <string name="add">Add</string>
+    <string name="nickname">Fullname</string>
+    <string name="error_input_all">Please complete all fields</string>
 </resources>

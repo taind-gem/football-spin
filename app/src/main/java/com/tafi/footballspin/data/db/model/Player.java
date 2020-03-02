@@ -1,10 +1,11 @@
 package com.tafi.footballspin.data.db.model;
 
 import com.google.gson.annotations.SerializedName;
+
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
-import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by taind-201 on 2/10/2020.
@@ -13,49 +14,39 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity(nameInDb = "player")
 public class Player {
 
-    @Id
+    @Id(autoincrement = true)
     @SerializedName("id")
     @Property(nameInDb = "id")
     private Long id;
 
-    @SerializedName("username")
-    @Property(nameInDb = "username")
-    private String username;
+    @SerializedName("name")
+    @Property(nameInDb = "name")
+    private String name;
 
     @SerializedName("nickname")
     @Property(nameInDb = "nickname")
     private String nickname;
 
-    @SerializedName("email")
-    @Property(nameInDb = "email")
-    private String email;
+    @SerializedName("avatar_url")
+    @Property(nameInDb = "avatar_url")
+    private String avatarUrl;
 
-    @SerializedName("birthday")
-    @Property(nameInDb = "birthday")
-    private String birthday;
-
-    @SerializedName("phone")
-    @Property(nameInDb = "phone")
-    private String phone;
-
-    @SerializedName("sex")
-    @Property(nameInDb = "sex")
-    private int sex;
-
-    @Generated(hash = 994565009)
-    public Player(Long id, String username, String nickname, String email,
-            String birthday, String phone, int sex) {
+    @Generated(hash = 1829865680)
+    public Player(Long id, String name, String nickname, String avatarUrl) {
         this.id = id;
-        this.username = username;
+        this.name = name;
         this.nickname = nickname;
-        this.email = email;
-        this.birthday = birthday;
-        this.phone = phone;
-        this.sex = sex;
+        this.avatarUrl = avatarUrl;
     }
 
     @Generated(hash = 30709322)
     public Player() {
+    }
+
+    public Player(String name, String nickname, String avatarUrl) {
+        this.name = name;
+        this.nickname = nickname;
+        this.avatarUrl = avatarUrl;
     }
 
     public Long getId() {
@@ -66,12 +57,12 @@ public class Player {
         this.id = id;
     }
 
-    public String getUsername() {
-        return this.username;
+    public String getName() {
+        return this.name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getNickname() {
@@ -82,36 +73,12 @@ public class Player {
         this.nickname = nickname;
     }
 
-    public String getEmail() {
-        return this.email;
+    public String getAvatarUrl() {
+        return this.avatarUrl;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getBirthday() {
-        return this.birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getPhone() {
-        return this.phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public int getSex() {
-        return this.sex;
-    }
-
-    public void setSex(int sex) {
-        this.sex = sex;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
 }

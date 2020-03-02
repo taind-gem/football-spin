@@ -1,5 +1,7 @@
 package com.tafi.footballspin.model
 
+import com.tafi.footballspin.data.db.model.Team
+
 /**
  * Created by taind-201 on 2/16/2020.
  */

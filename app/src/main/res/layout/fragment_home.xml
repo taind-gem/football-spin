@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainActivity">
+
+    <View
+            android:id="@+id/layout_team"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="64dp"
+            android:background="#6699CAFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+            android:id="@+id/img_team_logo"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_team"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/layout_team"
+            app:srcCompat="@drawable/chelsea" />
+
+    <ImageView
+            android:id="@+id/img_team_logo_2"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_team_logo"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:srcCompat="@drawable/bayern" />
+
+    <TextView
+            android:id="@+id/tv_team_name_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Chelsea FC"
+            android:textColor="#FFE600"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_logo"
+            app:layout_constraintStart_toStartOf="@+id/img_team_logo"
+            app:layout_constraintTop_toBottomOf="@+id/img_team_logo" />
+
+    <TextView
+            android:id="@+id/tv_team_name_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bayern Munich"
+            android:textColor="#FFE600"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_logo_2"
+            app:layout_constraintStart_toStartOf="@+id/img_team_logo_2"
+            app:layout_constraintTop_toTopOf="@+id/tv_team_name_1" />
+
+    <TextView
+            android:id="@+id/tv_region_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Premier League"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_team_name_1"
+            app:layout_constraintStart_toStartOf="@+id/tv_team_name_1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_team_name_1" />
+
+    <TextView
+            android:id="@+id/tv_region_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laliga"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_team_name_2"
+            app:layout_constraintStart_toStartOf="@+id/tv_team_name_2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_team_name_2" />
+
+    <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:includeFontPadding="false"
+            android:text="@string/vs"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_team"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/layout_team"
+            app:layout_constraintTop_toTopOf="@+id/layout_team" />
+
+    <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            android:background="@drawable/avatar_border"
+            app:srcCompat="@drawable/dungvd" />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+    <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            android:background="@drawable/avatar_border"
+            app:srcCompat="@drawable/tuanpb" />
+
+    <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/avatar_stroke"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="Việt Dũng"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView" />
+
+    <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/avatar_stroke"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="Tuan Phan"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2" />
+
+    <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/choose_team"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_logo"
+            app:layout_constraintStart_toStartOf="@+id/img_team_logo"
+            app:layout_constraintTop_toBottomOf="@+id/tv_region_1" />
+
+    <Button
+            android:id="@+id/button1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/choose_team"
+            app:layout_constraintEnd_toEndOf="@+id/img_team_logo_2"
+            app:layout_constraintStart_toStartOf="@+id/img_team_logo_2"
+            app:layout_constraintTop_toTopOf="@+id/button" />
+
+    <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/recent_match"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recent_match1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+</androidx.constraintlayout.widget.ConstraintLayout>

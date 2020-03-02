@@ -1,6 +1,8 @@
 package com.tafi.footballspin.data.db
 
 import com.tafi.footballspin.data.db.model.Match
+import com.tafi.footballspin.data.db.model.Player
+import com.tafi.footballspin.data.db.model.Team
 import io.reactivex.Observable
 
 /**
@@ -9,6 +11,12 @@ import io.reactivex.Observable
 
 interface DbHelper {
 
-    fun saveMatch(match: Match) : Observable<Long>
+    fun getPlayers(): Observable<List<Player>>
+
+    fun insertPlayer(player: Player): Observable<Boolean>
+
+    fun saveMatch(match: Match): Observable<Long>
+
+    fun saveTeamList(listLeague: List<Team>): Observable<Boolean>
 
 }

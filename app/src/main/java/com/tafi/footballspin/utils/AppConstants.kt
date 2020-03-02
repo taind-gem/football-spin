@@ -15,4 +15,8 @@ object AppConstants {
 
     const val TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss"
 
+    const val REQUEST_CODE_NEW_PLAYER = 1
+
+    const val EXTRA_NEW_PLAYER = "new_player"
+
 }

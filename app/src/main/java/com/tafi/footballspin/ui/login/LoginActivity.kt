@@ -28,7 +28,7 @@ class LoginActivity : BaseActivity(), ILoginView {
         mPresenter.onAttach(this)
     }
 
-    override fun initView() {
+    override fun initViewOnStart() {
         val view = window.decorView.findViewById<View>(android.R.id.content)
         hideKeyboardWhenClickOutsideEdittext(view)
 

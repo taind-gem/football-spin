@@ -1,6 +1,6 @@
 package com.tafi.footballspin.data.local
 
-import com.tafi.footballspin.model.League
+import com.tafi.footballspin.data.db.model.Team
 import io.reactivex.Observable
 
 /**
@@ -8,6 +8,6 @@ import io.reactivex.Observable
  */
 interface LocalHelper {
 
-    fun getAllTeamFromAssets(): Observable<List<League>>
+    fun getAllTeamFromAssets(): Observable<List<Team>>
 
 }

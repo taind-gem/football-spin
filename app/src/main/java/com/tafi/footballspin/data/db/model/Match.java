@@ -1,9 +1,11 @@
 package com.tafi.footballspin.data.db.model;
 
 import com.google.gson.annotations.SerializedName;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Transient;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
@@ -18,24 +20,50 @@ public class Match {
     @Property(nameInDb = "match_id")
     private Long matchId;
 
-    @SerializedName("host_id")
-    @Property(nameInDb = "host_id")
-    private Long hostId;
+    @SerializedName("host_player_id")
+    @Property(nameInDb = "host_player_id")
+    private Long hostPlayerId;
 
-    @SerializedName("guest_id")
-    @Property(nameInDb = "guest_id")
-    private Long guestId;
+    @SerializedName("guest_player_id")
+    @Property(nameInDb = "guest_player_id")
+    private Long guestPlayerId;
 
-    @SerializedName("score")
-    @Property(nameInDb = "score")
-    private String score;
+    @SerializedName("host_team_id")
+    @Property(nameInDb = "host_team_id")
+    private Long hostTeamId;
 
-    @Generated(hash = 1827855482)
-    public Match(Long matchId, Long hostId, Long guestId, String score) {
+    @SerializedName("guest_team_id")
+    @Property(nameInDb = "guest_team_id")
+    private Long guestTeamId;
+    
+    @SerializedName("statistic_id")
+    @Property(nameInDb = "statistic_id")
+    private Long statisticId;
+
+    @Transient
+    public Team hostPlayer;
+
+    @Transient
+    public Team guestPlayer;
+
+    @Transient
+    public Team hostTeam;
+
+    @Transient
+    public Team guestTeam;
+
+    @Transient
+    public Statistic statistic;
+
+    @Generated(hash = 859926195)
+    public Match(Long matchId, Long hostPlayerId, Long guestPlayerId,
+            Long hostTeamId, Long guestTeamId, Long statisticId) {
         this.matchId = matchId;
-        this.hostId = hostId;
-        this.guestId = guestId;
-        this.score = score;
+        this.hostPlayerId = hostPlayerId;
+        this.guestPlayerId = guestPlayerId;
+        this.hostTeamId = hostTeamId;
+        this.guestTeamId = guestTeamId;
+        this.statisticId = statisticId;
     }
 
     @Generated(hash = 1834681287)
@@ -50,28 +78,44 @@ public class Match {
         this.matchId = matchId;
     }
 
-    public Long getHostId() {
-        return this.hostId;
+    public Long getHostPlayerId() {
+        return this.hostPlayerId;
     }
 
-    public void setHostId(Long hostId) {
-        this.hostId = hostId;
+    public void setHostPlayerId(Long hostPlayerId) {
+        this.hostPlayerId = hostPlayerId;
     }
 
-    public Long getGuestId() {
-        return this.guestId;
+    public Long getGuestPlayerId() {
+        return this.guestPlayerId;
     }
 
-    public void setGuestId(Long guestId) {
-        this.guestId = guestId;
+    public void setGuestPlayerId(Long guestPlayerId) {
+        this.guestPlayerId = guestPlayerId;
     }
 
-    public String getScore() {
-        return this.score;
+    public Long getHostTeamId() {
+        return this.hostTeamId;
     }
 
-    public void setScore(String score) {
-        this.score = score;
+    public void setHostTeamId(Long hostTeamId) {
+        this.hostTeamId = hostTeamId;
+    }
+
+    public Long getGuestTeamId() {
+        return this.guestTeamId;
+    }
+
+    public void setGuestTeamId(Long guestTeamId) {
+        this.guestTeamId = guestTeamId;
+    }
+
+    public Long getStatisticId() {
+        return this.statisticId;
+    }
+
+    public void setStatisticId(Long statisticId) {
+        this.statisticId = statisticId;
     }
 
 }

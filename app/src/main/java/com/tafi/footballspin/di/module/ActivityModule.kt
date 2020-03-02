@@ -7,9 +7,10 @@ import com.tafi.footballspin.di.scope.PerActivity
 import com.tafi.footballspin.ui.login.ILoginPresenter
 import com.tafi.footballspin.ui.login.ILoginView
 import com.tafi.footballspin.ui.login.LoginPresenter
-import com.tafi.footballspin.ui.main.IMainPresenter
-import com.tafi.footballspin.ui.main.IMainView
-import com.tafi.footballspin.ui.main.MainPresenter
+import com.tafi.footballspin.ui.main.MainPagerAdapter
+import com.tafi.footballspin.ui.main.home.HomePresenter
+import com.tafi.footballspin.ui.main.home.IHomePresenter
+import com.tafi.footballspin.ui.main.home.IHomeView
 import com.tafi.footballspin.ui.splash.ISplashPresenter
 import com.tafi.footballspin.ui.splash.ISplashView
 import com.tafi.footballspin.ui.splash.SplashPresenter
@@ -47,6 +48,11 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
     }
 
     @Provides
+    fun provideMainPagerAdapter(activity: AppCompatActivity): MainPagerAdapter {
+        return MainPagerAdapter(activity.supportFragmentManager)
+    }
+
+    @Provides
     @PerActivity
     fun provideLoginPresenter(presenter: LoginPresenter<ILoginView>): ILoginPresenter<ILoginView> {
         return presenter
@@ -60,7 +66,7 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
 
     @Provides
     @PerActivity
-    fun provideMainPresenter(presenter: MainPresenter<IMainView>): IMainPresenter<IMainView> {
+    fun provideMainPresenter(presenter: HomePresenter<IHomeView>): IHomePresenter<IHomeView> {
         return presenter
     }
 

@@ -3,6 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorOnSurface">#f0f0f0</color>
+    
+    <color name="default_transperent_bg">#55000000</color>
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
@@ -23,6 +26,11 @@
 
     <color name="wheel_stroke_color">#55D1D1D1</color>
     <color name="wheel_text_color">#FFFFFF</color>
+    <color name="bottom_navigation_background">#94000000</color>
+    <color name="navigation_active">#FFFFFF</color>
+    <color name="navigation_normal">#868686</color>
+    <color name="avatar_stroke">#FFFFFF</color>
+    <color name="match_background">#2A000000</color>
 
     <string-array name="rainbow_dash">
         <item>@color/rainbowDashRed</item>

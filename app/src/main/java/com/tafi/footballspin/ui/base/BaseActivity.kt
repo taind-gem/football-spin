@@ -61,7 +61,7 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
 
     override fun onStart() {
         super.onStart()
-        initView()
+        initViewOnStart()
     }
 
     private fun getNavigationBarHeight(): Int {
@@ -166,6 +166,6 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
         finish()
     }
 
-    protected abstract fun initView()
+    protected abstract fun initViewOnStart()
 
 }

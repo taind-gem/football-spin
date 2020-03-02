@@ -36,7 +36,7 @@ abstract class BaseFragment : Fragment(), IView {
 
     override fun showLoading() {
         hideLoading()
-        mProgressDialog = CommonUtils.showLoadingDialog(this.context)
+        mProgressDialog = CommonUtils.showLoadingDialog(context!!)
     }
 
     override fun hideLoading() {
