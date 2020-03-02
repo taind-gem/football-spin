@@ -57,11 +57,7 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
             val navBarHeight = getNavigationBarHeight()
             findViewById<View>(android.R.id.content).rootView.setPadding(0, 0, 0, navBarHeight)
         }
-    }
 
-    override fun onStart() {
-        super.onStart()
-        initViewOnStart()
     }
 
     private fun getNavigationBarHeight(): Int {
@@ -166,6 +162,6 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
         finish()
     }
 
-    protected abstract fun initViewOnStart()
+    protected abstract fun initView()
 
 }

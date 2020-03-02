@@ -29,6 +29,10 @@ class AppDbHelper @Inject constructor(dbOpenHelper: DbOpenHelper) : DbHelper {
         return Observable.fromCallable { mDaoSession.matchDao.insert(match) }
     }
 
+    override fun getTeams(): Observable<List<Team>> {
+        return Observable.fromCallable { mDaoSession.teamDao.loadAll() }
+    }
+
     override fun saveTeamList(listLeague: List<Team>): Observable<Boolean> {
         return Observable.fromCallable {
             mDaoSession.teamDao.insertInTx(listLeague)

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:background="@color/default_transperent_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/root_view"
+        android:layout_height="60dp">
+
+    <ImageView
+            android:id="@+id/img_team_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/check_box"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/barcelona" />
+
+    <CheckBox
+            android:id="@+id/check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="3dp" />
+
+    <TextView
+            android:id="@+id/tv_team_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="PSG"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toStartOf="@+id/rating_bar"
+            app:layout_constraintStart_toEndOf="@+id/img_team_logo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <RatingBar
+            android:id="@+id/rating_bar"
+            style="@style/TeamRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/tv_league_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="14dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_team_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_team_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

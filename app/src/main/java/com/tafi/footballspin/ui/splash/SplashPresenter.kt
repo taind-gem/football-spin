@@ -21,7 +21,7 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
         super.onAttach(view)
 
         mCompositeDisposable.add(
-            mDataManager.getAllTeamFromAssets()
+            mDataManager.readAllTeamFromAsset()
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe { list ->
@@ -29,11 +29,8 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
                         return@subscribe
                     }
 
-                    if (list.isEmpty()) {
                         saveTeamList(list)
-                    } else {
-                        mView?.hideLoading()
-                    }
+
                 }
 
         )

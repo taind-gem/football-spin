@@ -25,7 +25,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
     }
 
-    override fun initViewOnStart() {
+    override fun initView() {
 
         view_pager.adapter = mPagerAdapter
         view_pager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {

@@ -1,13 +1,11 @@
 package com.tafi.footballspin.ui.main
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.tafi.footballspin.R
 import com.tafi.footballspin.data.db.model.Player
 import com.tafi.footballspin.ui.base.BaseActivity
-import com.tafi.footballspin.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_new_player.*
 
 class NewPlayerActivity : BaseActivity() {
@@ -17,7 +15,7 @@ class NewPlayerActivity : BaseActivity() {
         setContentView(R.layout.activity_new_player)
     }
 
-    override fun initViewOnStart() {
+    override fun initView() {
         val view = window.decorView.findViewById<View>(android.R.id.content)
         hideKeyboardWhenClickOutsideEdittext(view)
 
@@ -32,7 +30,7 @@ class NewPlayerActivity : BaseActivity() {
                     edt_avatar_url.text.toString()
                 )
 
-                val intent = Intent().putExtra(AppConstants.EXTRA_NEW_PLAYER, player)
+//                val intent = Intent().putExtra(AppConstants.EXTRA_NEW_PLAYER, player)
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             }

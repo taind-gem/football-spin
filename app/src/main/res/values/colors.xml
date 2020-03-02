@@ -31,6 +31,8 @@
     <color name="navigation_normal">#868686</color>
     <color name="avatar_stroke">#FFFFFF</color>
     <color name="match_background">#2A000000</color>
+    <color name="check_bg">#2237A2</color>
+    <color name="uncheck_bg">#36CFCFCF</color>
 
     <string-array name="rainbow_dash">
         <item>@color/rainbowDashRed</item>

@@ -8,6 +8,6 @@ import io.reactivex.Observable
  */
 interface LocalHelper {
 
-    fun getAllTeamFromAssets(): Observable<List<Team>>
+    fun readAllTeamFromAsset(): Observable<List<Team>>
 
 }

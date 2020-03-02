@@ -14,6 +14,9 @@ import com.tafi.footballspin.ui.main.home.IHomeView
 import com.tafi.footballspin.ui.splash.ISplashPresenter
 import com.tafi.footballspin.ui.splash.ISplashView
 import com.tafi.footballspin.ui.splash.SplashPresenter
+import com.tafi.footballspin.ui.teamselect.ITeamSelectPresenter
+import com.tafi.footballspin.ui.teamselect.ITeamSelectView
+import com.tafi.footballspin.ui.teamselect.TeamSelectPresenter
 import com.tafi.footballspin.utils.rx.AppSchedulerProvider
 import com.tafi.footballspin.utils.rx.SchedulerProvider
 import dagger.Module
@@ -67,6 +70,12 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
     @Provides
     @PerActivity
     fun provideMainPresenter(presenter: HomePresenter<IHomeView>): IHomePresenter<IHomeView> {
+        return presenter
+    }
+
+    @Provides
+    @PerActivity
+    fun provideTeamSelectPresenter(presenter: TeamSelectPresenter<ITeamSelectView>): ITeamSelectPresenter<ITeamSelectView> {
         return presenter
     }
 

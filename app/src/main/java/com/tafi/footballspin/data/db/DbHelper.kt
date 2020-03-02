@@ -17,6 +17,8 @@ interface DbHelper {
 
     fun saveMatch(match: Match): Observable<Long>
 
+    fun getTeams(): Observable<List<Team>>
+
     fun saveTeamList(listLeague: List<Team>): Observable<Boolean>
 
 }

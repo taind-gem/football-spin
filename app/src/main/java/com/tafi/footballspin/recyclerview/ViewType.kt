@@ -9,6 +9,6 @@ object ViewType {
 
     const val VIEW_TYPE_NORMAL = 1
 
-    const val VIEW_TYPE_LOADING = 1
+    const val VIEW_TYPE_LOADING = 2
 
 }

@@ -3,9 +3,9 @@ package com.tafi.footballspin.data.db.model;
 import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by taind-201 on 2/10/2020.
@@ -19,9 +19,9 @@ public class Player {
     @Property(nameInDb = "id")
     private Long id;
 
-    @SerializedName("name")
-    @Property(nameInDb = "name")
-    private String name;
+    @SerializedName("username")
+    @Property(nameInDb = "username")
+    private String username;
 
     @SerializedName("nickname")
     @Property(nameInDb = "nickname")
@@ -31,22 +31,22 @@ public class Player {
     @Property(nameInDb = "avatar_url")
     private String avatarUrl;
 
-    @Generated(hash = 1829865680)
-    public Player(Long id, String name, String nickname, String avatarUrl) {
+    public Player(String username, String nickname, String avatarUrl) {
+        this.username = username;
+        this.nickname = nickname;
+        this.avatarUrl = avatarUrl;
+    }
+
+    @Generated(hash = 1495284834)
+    public Player(Long id, String username, String nickname, String avatarUrl) {
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.nickname = nickname;
         this.avatarUrl = avatarUrl;
     }
 
     @Generated(hash = 30709322)
     public Player() {
-    }
-
-    public Player(String name, String nickname, String avatarUrl) {
-        this.name = name;
-        this.nickname = nickname;
-        this.avatarUrl = avatarUrl;
     }
 
     public Long getId() {
@@ -57,12 +57,12 @@ public class Player {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getUsername() {
+        return this.username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getNickname() {

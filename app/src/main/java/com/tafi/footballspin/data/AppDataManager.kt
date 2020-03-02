@@ -22,6 +22,10 @@ class AppDataManager @Inject constructor(
     private val mLocalHelper: LocalHelper,
     private val mPreferencesHelper: PreferencesHelper
 ) : DataManager {
+    override fun getTeams(): Observable<List<Team>> {
+        return mDbHelper.getTeams()
+    }
+
     override fun getPlayers(): Observable<List<Player>> {
         return mDbHelper.getPlayers()
     }
@@ -34,8 +38,8 @@ class AppDataManager @Inject constructor(
         return mDbHelper.saveTeamList(listTeam)
     }
 
-    override fun getAllTeamFromAssets(): Observable<List<Team>> {
-        return mLocalHelper.getAllTeamFromAssets()
+    override fun readAllTeamFromAsset(): Observable<List<Team>> {
+        return mLocalHelper.readAllTeamFromAsset()
     }
 
     override fun setUserAsLoggedOut() {

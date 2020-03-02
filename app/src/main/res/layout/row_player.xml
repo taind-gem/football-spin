@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bottom_navigation_background"
@@ -7,18 +8,55 @@
 
     <ImageView
             android:id="@+id/img_avatar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/tuanpb" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/tuanpb"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
             android:id="@+id/tv_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/img_avatar"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/img_avatar"
+            android:text="Tuan Phan"
             android:textSize="20sp"
-            android:layout_centerVertical="true"
-            android:text="Tuan Phan"/>
+            app:layout_constraintStart_toEndOf="@+id/img_avatar"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <TextView
+            android:id="@+id/tv_statistic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_toEndOf="@id/img_avatar"
+            android:text="10W - 5D - 3L"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+    <Button
+            android:id="@+id/btn_select_team"
+            android:layout_width="@dimen/splash_select_team_button_width"
+            android:layout_height="0dp"
+            android:background="#C45F11"
+            android:text="0/8"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/img_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+            android:id="@+id/img_check"
+            android:layout_width="@dimen/splash_select_team_button_width"
+            android:layout_height="0dp"
+            android:text="Button"
+            android:padding="6dp"
+            android:src="@drawable/ic_check"
+            android:background="@color/check_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_select_team" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

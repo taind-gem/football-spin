@@ -45,11 +45,11 @@ public class Team {
 
     @SerializedName("rate")
     @Property(nameInDb = "rate")
-    public String rate;
+    public Float rate;
 
-    @Generated(hash = 558770748)
+    @Generated(hash = 572574055)
     public Team(Long id, String key, String name, String abbr, String code,
-            String leagueName, String leagueCode, String rate) {
+            String leagueName, String leagueCode, Float rate) {
         this.id = id;
         this.key = key;
         this.name = name;
@@ -120,11 +120,11 @@ public class Team {
         this.leagueCode = leagueCode;
     }
 
-    public String getRate() {
+    public Float getRate() {
         return this.rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(Float rate) {
         this.rate = rate;
     }
 

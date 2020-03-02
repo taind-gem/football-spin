@@ -138,7 +138,8 @@
           "key": "inter",
           "name": "Inter Milan",
           "abbr": "Inter",
-          "code": "INT"
+          "code": "INT",
+          "rate": 4
         },
         {
           "key": "juventus",

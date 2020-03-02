@@ -22,7 +22,7 @@ class AppLocalHelper @Inject constructor(
     @ApplicationContext val context: Context
 ) : LocalHelper {
 
-    override fun getAllTeamFromAssets(): Observable<List<Team>> {
+    override fun readAllTeamFromAsset(): Observable<List<Team>> {
         val listAllTeam = mutableListOf<Team>()
 
         val jsonFileString = getJsonData(AppConstants.ALL_TEAM_FILE_NAME)
