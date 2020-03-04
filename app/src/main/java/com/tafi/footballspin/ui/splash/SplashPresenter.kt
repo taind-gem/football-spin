@@ -2,8 +2,7 @@ package com.tafi.footballspin.ui.splash
 
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.data.db.model.Player
-import com.tafi.footballspin.data.db.model.Team
-import com.tafi.footballspin.network.AppNetworkManager
+import com.tafi.footballspin.data.network.AppNetworkManager
 import com.tafi.footballspin.ui.base.BasePresenter
 import com.tafi.footballspin.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
@@ -21,41 +20,22 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
         super.onAttach(view)
 
         mCompositeDisposable.add(
-            mDataManager.readAllTeamFromAsset()
+            mDataManager.seedDatabaseTeams()
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
-                .subscribe { list ->
-                    if (!isViewAttached()) {
-                        return@subscribe
+                .switchMap {
+                    mDataManager.seedDatabasePlayers()
+                }
+                .switchMap {
+                    mDataManager.getPlayerList()
+                }
+                .subscribe { players ->
+                    mView?.apply {
+                        hideLoading()
+                        updatePlayerList(players)
                     }
+                })
 
-                        saveTeamList(list)
-
-                }
-
-        )
-    }
-
-    private fun saveTeamList(listLeague: List<Team>) {
-        mCompositeDisposable.add(
-            mDataManager.saveTeamList(listLeague)
-                .subscribeOn(mSchedulerProvider.io())
-                .observeOn(mSchedulerProvider.ui())
-                .subscribe {
-                    mView?.hideLoading()
-                }
-        )
-    }
-
-    override fun getPlayers() {
-        mCompositeDisposable.add(
-            mDataManager.getPlayers()
-                .subscribeOn(mSchedulerProvider.io())
-                .observeOn(mSchedulerProvider.ui())
-                .subscribe { listPlayer ->
-                    mView?.updatePlayerList(listPlayer)
-                }
-        )
     }
 
     override fun addPlayer(player: Player) {
@@ -64,7 +44,6 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe {
-
                 }
         )
     }

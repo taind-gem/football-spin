@@ -18,7 +18,9 @@ import com.tafi.footballspin.recyclerview.ViewType.VIEW_TYPE_NORMAL
 import com.tafi.footballspin.recyclerview.viewholder.BaseViewHolder
 import com.tafi.footballspin.recyclerview.viewholder.EmptyViewHolder
 import com.tafi.footballspin.recyclerview.viewholder.LoadingViewHolder
+import com.tafi.footballspin.ui.splash.SplashActivity
 import com.tafi.footballspin.ui.teamselect.TeamSelectActivity
+import com.tafi.footballspin.utils.AppConstants.REQUEST_CODE_TEAM_SELECT
 
 /**
  * Created by taind-201 on 3/1/2020.
@@ -128,9 +130,8 @@ class PlayerAdapter constructor(var context: Context) :
         }
 
         private fun openTeamSelectActivity(){
-            (context as? Activity)?.apply {
-                startActivity(Intent(this, TeamSelectActivity::class.java))
-                finish()
+            (context as? SplashActivity)?.apply {
+                startActivityForResult(Intent(this, TeamSelectActivity::class.java), REQUEST_CODE_TEAM_SELECT)
             }
         }
     }

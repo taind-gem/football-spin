@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.widget.Toast.LENGTH_LONG
+import android.widget.Toast.LENGTH_SHORT
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.tafi.footballspin.R
@@ -108,7 +109,7 @@ class TeamSelectAdapter constructor(var context: Context) :
         private fun setSelectTeam(teamId: Long) {
             if (checkBox.isChecked) selectedSet.add(teamId)
             else selectedSet.remove(teamId)
-            Toast.makeText(context, selectedSet.toString(), LENGTH_LONG).show()
+            Toast.makeText(context, selectedSet.toString(), LENGTH_SHORT).show()
         }
 
     }

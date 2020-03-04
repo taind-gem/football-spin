@@ -1,12 +1,12 @@
-package com.tafi.footballspin.network
+package com.tafi.footballspin.data.network
 
 import android.content.Context
 import android.os.Build
 import com.google.gson.Gson
 import com.tafi.footballspin.BuildConfig
 import com.tafi.footballspin.R
-import com.tafi.footballspin.network.request.LoginRequest
-import com.tafi.footballspin.network.response.LoginResponse
+import com.tafi.footballspin.data.network.request.LoginRequest
+import com.tafi.footballspin.data.network.response.LoginResponse
 import com.tafi.footballspin.di.scope.ApplicationContext
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -22,7 +22,8 @@ import javax.inject.Inject
  * Created by taind-201 on 2/20/2020.
  */
 
-class AppNetworkManager @Inject constructor(@ApplicationContext context: Context) : NetworkManager {
+class AppNetworkManager @Inject constructor(@ApplicationContext context: Context) :
+    NetworkManager {
 
     private var retrofit: Retrofit
     private var apiService: ApiService

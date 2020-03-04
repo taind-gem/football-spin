@@ -1,8 +1,8 @@
-package com.tafi.footballspin.network
+package com.tafi.footballspin.data.network
 
-import com.tafi.footballspin.network.request.LoginRequest
-import com.tafi.footballspin.network.response.LoginResponse
-import com.tafi.footballspin.network.response.LogoutResponse
+import com.tafi.footballspin.data.network.request.LoginRequest
+import com.tafi.footballspin.data.network.response.LoginResponse
+import com.tafi.footballspin.data.network.response.LogoutResponse
 import io.reactivex.Single
 
 /**

@@ -1,7 +1,7 @@
-package com.tafi.footballspin.network
+package com.tafi.footballspin.data.network
 
-import com.tafi.footballspin.network.request.LoginRequest
-import com.tafi.footballspin.network.response.LoginResponse
+import com.tafi.footballspin.data.network.request.LoginRequest
+import com.tafi.footballspin.data.network.response.LoginResponse
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.POST

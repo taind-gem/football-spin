@@ -88,7 +88,7 @@
     <Button
             android:id="@+id/btn_add_player"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="16dp"
             android:background="@color/default_transperent_bg"
             android:paddingStart="20dp"
@@ -112,8 +112,7 @@
 
     <ImageView
             android:id="@+id/img_settings"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            style="@style/DefaultButton"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"

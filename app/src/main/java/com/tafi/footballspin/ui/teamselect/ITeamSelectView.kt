@@ -9,6 +9,6 @@ import com.tafi.footballspin.ui.base.IView
 
 interface ITeamSelectView : IView {
 
-    fun updatePlayerList(listPlayer: List<Team>)
+    fun updatePlayerList(teams: List<Team>)
 
 }

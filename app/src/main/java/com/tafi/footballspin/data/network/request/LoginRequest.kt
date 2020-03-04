@@ -1,4 +1,4 @@
-package com.tafi.footballspin.network.request
+package com.tafi.footballspin.data.network.request
 
 import com.google.gson.annotations.SerializedName
 

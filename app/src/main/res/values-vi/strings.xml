@@ -19,5 +19,6 @@
     <string name="start">Start</string>
     <string name="add">Add</string>
     <string name="error_input_all">Please complete all fields</string>
+    <string name="finish">Finish</string>
 
 </resources>

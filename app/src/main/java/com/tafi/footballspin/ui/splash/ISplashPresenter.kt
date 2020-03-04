@@ -6,8 +6,6 @@ import com.tafi.footballspin.ui.base.IView
 
 interface ISplashPresenter<V : IView> : IPresenter<V> {
 
-    fun getPlayers()
-
     fun addPlayer(player: Player)
 
 }

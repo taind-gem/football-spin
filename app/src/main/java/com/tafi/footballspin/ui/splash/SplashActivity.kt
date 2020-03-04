@@ -29,13 +29,12 @@ class SplashActivity : BaseActivity(), ISplashView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         activityComponent.inject(this)
-        mPresenter.onAttach(this)
 
         initView()
+        mPresenter.onAttach(this)
     }
 
     override fun initView() {
-
         mPlayerAdapter = PlayerAdapter(this)
         val mLayoutManager = LinearLayoutManager(this)
         rc_player.apply {
@@ -43,14 +42,13 @@ class SplashActivity : BaseActivity(), ISplashView {
             adapter = mPlayerAdapter
             addItemDecoration(VerticalSpaceDecoration(CommonUtils.dpToPx(this@SplashActivity, 12f)))
         }
-        mPresenter.getPlayers()
 
         updateAppVersion()
 
-        //set view event
         btn_add_player.setOnClickListener { openNewPlayerActivity() }
         btn_start.setOnClickListener { openMainActivity() }
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -61,7 +59,12 @@ class SplashActivity : BaseActivity(), ISplashView {
                         intent.getSerializableExtra(AppConstants.EXTRA_NEW_PLAYER) as Player
                     mPresenter.addPlayer(player)
                 }
-
+            AppConstants.REQUEST_CODE_TEAM_SELECT -> {
+                if (resultCode == Activity.RESULT_OK && intent.hasExtra(AppConstants.EXTRA_TEAM_SELECT)) {
+                    val ids =
+                        intent.getSerializableExtra(AppConstants.EXTRA_TEAM_SELECT) as HashSet<Int>
+                }
+            }
         }
     }
 
@@ -71,12 +74,7 @@ class SplashActivity : BaseActivity(), ISplashView {
     }
 
     override fun updatePlayerList(listPlayer: List<Player>) {
-        val list = arrayListOf(
-            Player(1, "dungvv", "Việt Dũng", "dungvv"),
-            Player(2, "tuanpb", "Tuan Phan", "tuanpb"),
-            Player(3, "taind", "Taihandsome", "taind")
-        )
-        mPlayerAdapter.mPlayerList = list
+        mPlayerAdapter.mPlayerList = listPlayer
     }
 
     override fun showLoading() {

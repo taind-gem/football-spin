@@ -6,10 +6,8 @@ import com.tafi.footballspin.data.AppDataManager
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.data.db.AppDbHelper
 import com.tafi.footballspin.data.db.DbHelper
-import com.tafi.footballspin.data.local.AppLocalHelper
-import com.tafi.footballspin.data.local.LocalHelper
-import com.tafi.footballspin.network.NetworkManager
-import com.tafi.footballspin.network.AppNetworkManager
+import com.tafi.footballspin.data.network.NetworkManager
+import com.tafi.footballspin.data.network.AppNetworkManager
 import com.tafi.footballspin.data.prefs.AppPreferencesHelper
 import com.tafi.footballspin.data.prefs.PreferencesHelper
 import com.tafi.footballspin.di.scope.ApplicationContext
@@ -47,12 +45,6 @@ class ApplicationModule(private val mApplication: Application) {
     @DatabaseInfo
     fun provideDatabaseName(): String {
         return AppConstants.DB_NAME
-    }
-
-    @Provides
-    @Singleton
-    fun provideLocalHelper(appLocalHelper: AppLocalHelper): LocalHelper {
-        return appLocalHelper
     }
 
     @Provides

@@ -1,7 +1,7 @@
 package com.tafi.footballspin.ui.teamselect
 
 import com.tafi.footballspin.data.DataManager
-import com.tafi.footballspin.network.AppNetworkManager
+import com.tafi.footballspin.data.network.AppNetworkManager
 import com.tafi.footballspin.ui.base.BasePresenter
 import com.tafi.footballspin.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable

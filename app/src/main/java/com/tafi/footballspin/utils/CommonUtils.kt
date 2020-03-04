@@ -56,18 +56,15 @@ object CommonUtils {
         return matcher.matches()
     }
 
-    @Throws(IOException::class)
-    fun loadJSONFromAsset(context: Context, jsonFileName: String): String {
-
-        val manager = context.assets
-        val `is` = manager.open(jsonFileName)
-
-        val size = `is`.available()
-        val buffer = ByteArray(size)
-        `is`.read(buffer)
-        `is`.close()
-
-        return String(buffer, StandardCharsets.UTF_8)
+    fun readDataFromFile(context: Context, fileName: String): String? {
+        val jsonString: String
+        try {
+            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+            return null
+        }
+        return jsonString
     }
 
     fun spToPx(context: Context, sp: Float): Int {

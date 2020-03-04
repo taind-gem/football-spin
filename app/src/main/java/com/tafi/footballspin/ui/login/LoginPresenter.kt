@@ -3,8 +3,8 @@ package com.tafi.footballspin.ui.login
 import com.tafi.footballspin.R
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.model.entity.LoggedInMode
-import com.tafi.footballspin.network.AppNetworkManager
-import com.tafi.footballspin.network.request.LoginRequest
+import com.tafi.footballspin.data.network.AppNetworkManager
+import com.tafi.footballspin.data.network.request.LoginRequest
 import com.tafi.footballspin.ui.base.BasePresenter
 import com.tafi.footballspin.utils.CommonUtils
 import com.tafi.footballspin.utils.rx.SchedulerProvider

@@ -11,14 +11,23 @@ import io.reactivex.Observable
 
 interface DbHelper {
 
-    fun getPlayers(): Observable<List<Player>>
+    //player db
+    fun isPlayerEmpty(): Observable<Boolean>
 
     fun insertPlayer(player: Player): Observable<Boolean>
 
+    fun getPlayerList(): Observable<List<Player>>
+
+    fun savePlayerList(players: List<Player>): Observable<Boolean>
+
+    //match db
     fun saveMatch(match: Match): Observable<Long>
+
+    //team db
+    fun isTeamEmpty(): Observable<Boolean>
 
     fun getTeams(): Observable<List<Team>>
 
-    fun saveTeamList(listLeague: List<Team>): Observable<Boolean>
+    fun saveTeamList(teams: List<Team>): Observable<Boolean>
 
 }

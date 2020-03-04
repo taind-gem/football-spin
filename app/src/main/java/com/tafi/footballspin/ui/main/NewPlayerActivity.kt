@@ -19,7 +19,7 @@ class NewPlayerActivity : BaseActivity() {
         val view = window.decorView.findViewById<View>(android.R.id.content)
         hideKeyboardWhenClickOutsideEdittext(view)
 
-        btn_add.setOnClickListener {
+        btn_finish.setOnClickListener {
             val error = checkInfoValidate()
             if (error != null) {
                 showMessage(error)

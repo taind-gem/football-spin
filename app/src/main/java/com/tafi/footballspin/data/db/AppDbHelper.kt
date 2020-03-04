@@ -14,6 +14,13 @@ class AppDbHelper @Inject constructor(dbOpenHelper: DbOpenHelper) : DbHelper {
 
     private var mDaoSession: DaoSession = DaoMaster(dbOpenHelper.writableDb).newSession()
 
+    /*
+     * Player database
+     */
+    override fun isPlayerEmpty(): Observable<Boolean> {
+        return Observable.fromCallable { mDaoSession.playerDao.count() == 0L }
+    }
+
     override fun insertPlayer(player: Player): Observable<Boolean> {
         return Observable.fromCallable {
             mDaoSession.playerDao.insert(player)
@@ -21,21 +28,40 @@ class AppDbHelper @Inject constructor(dbOpenHelper: DbOpenHelper) : DbHelper {
         }
     }
 
-    override fun getPlayers(): Observable<List<Player>> {
+    override fun getPlayerList(): Observable<List<Player>> {
         return Observable.fromCallable { mDaoSession.playerDao.loadAll() }
     }
 
+    override fun savePlayerList(players: List<Player>): Observable<Boolean> {
+        return Observable.fromCallable {
+            mDaoSession.playerDao.insertInTx(players)
+            return@fromCallable true
+        }
+    }
+
+
+    /*
+     * Match database
+     */
     override fun saveMatch(match: Match): Observable<Long> {
         return Observable.fromCallable { mDaoSession.matchDao.insert(match) }
+    }
+
+
+    /*
+     * Team database
+     */
+    override fun isTeamEmpty(): Observable<Boolean> {
+        return Observable.fromCallable { mDaoSession.teamDao.count() == 0L }
     }
 
     override fun getTeams(): Observable<List<Team>> {
         return Observable.fromCallable { mDaoSession.teamDao.loadAll() }
     }
 
-    override fun saveTeamList(listLeague: List<Team>): Observable<Boolean> {
+    override fun saveTeamList(teams: List<Team>): Observable<Boolean> {
         return Observable.fromCallable {
-            mDaoSession.teamDao.insertInTx(listLeague)
+            mDaoSession.teamDao.insertInTx(teams)
             return@fromCallable true
         }
     }
