@@ -4,6 +4,7 @@ import com.tafi.footballspin.di.module.ActivityModule
 import com.tafi.footballspin.di.scope.PerActivity
 import com.tafi.footballspin.ui.login.LoginActivity
 import com.tafi.footballspin.ui.main.MainActivity
+import com.tafi.footballspin.ui.main.home.HomeFragment
 import com.tafi.footballspin.ui.splash.SplashActivity
 import com.tafi.footballspin.ui.teamselect.TeamSelectActivity
 import dagger.Component
@@ -22,5 +23,7 @@ interface ActivityComponent {
     fun inject(activity: LoginActivity)
 
     fun inject(activity: TeamSelectActivity)
+
+    fun inject(fragment: HomeFragment)
 
 }

@@ -3,7 +3,6 @@ package com.tafi.footballspin.ui.base
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
-import android.view.View
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.tafi.footballspin.di.component.ActivityComponent
@@ -13,17 +12,14 @@ import com.tafi.footballspin.utils.CommonUtils
  * Created by taind-201 on 2/7/2020.
  */
 abstract class BaseFragment : Fragment(), IView {
+
     var baseActivity: BaseActivity? = null
         private set
+
     private var mProgressDialog: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setUp(view)
     }
 
     override fun onAttach(context: Context) {
@@ -96,7 +92,6 @@ abstract class BaseFragment : Fragment(), IView {
             baseActivity!!.activityComponent
         } else null
 
-    protected abstract fun setUp(view: View?)
 
     interface Callback {
         fun onFragmentAttached()

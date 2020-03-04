@@ -188,8 +188,8 @@ class AppDataManager @Inject constructor(
         return mDbHelper.isTeamEmpty()
     }
 
-    override fun getTeams(): Observable<List<Team>> {
-        return mDbHelper.getTeams()
+    override fun getTeamList(): Observable<List<Team>> {
+        return mDbHelper.getTeamList()
     }
 
     override fun getPlayerList(): Observable<List<Player>> {
@@ -202,6 +202,10 @@ class AppDataManager @Inject constructor(
 
     override fun insertPlayer(player: Player): Observable<Boolean> {
         return mDbHelper.insertPlayer(player)
+    }
+
+    override fun updatePlayer(player: Player): Observable<Boolean> {
+        return mDbHelper.updatePlayer(player)
     }
 
     override fun saveTeamList(teams: List<Team>): Observable<Boolean> {

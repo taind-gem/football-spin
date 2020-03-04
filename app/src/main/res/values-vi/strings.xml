@@ -20,5 +20,7 @@
     <string name="add">Add</string>
     <string name="error_input_all">Please complete all fields</string>
     <string name="finish">Finish</string>
+    <string name="select_enough_team">Đã chọn đủ %d đội</string>
+    <string name="selected_number">Đã chọn: %d đội</string>
 
 </resources>

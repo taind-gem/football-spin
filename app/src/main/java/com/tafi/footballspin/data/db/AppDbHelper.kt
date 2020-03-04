@@ -28,6 +28,13 @@ class AppDbHelper @Inject constructor(dbOpenHelper: DbOpenHelper) : DbHelper {
         }
     }
 
+    override fun updatePlayer(player: Player): Observable<Boolean> {
+        return Observable.fromCallable {
+            mDaoSession.playerDao.update(player)
+            return@fromCallable true
+        }
+    }
+
     override fun getPlayerList(): Observable<List<Player>> {
         return Observable.fromCallable { mDaoSession.playerDao.loadAll() }
     }
@@ -38,7 +45,6 @@ class AppDbHelper @Inject constructor(dbOpenHelper: DbOpenHelper) : DbHelper {
             return@fromCallable true
         }
     }
-
 
     /*
      * Match database
@@ -55,7 +61,7 @@ class AppDbHelper @Inject constructor(dbOpenHelper: DbOpenHelper) : DbHelper {
         return Observable.fromCallable { mDaoSession.teamDao.count() == 0L }
     }
 
-    override fun getTeams(): Observable<List<Team>> {
+    override fun getTeamList(): Observable<List<Team>> {
         return Observable.fromCallable { mDaoSession.teamDao.loadAll() }
     }
 

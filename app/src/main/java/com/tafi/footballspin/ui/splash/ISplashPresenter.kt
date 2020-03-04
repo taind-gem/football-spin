@@ -8,4 +8,6 @@ interface ISplashPresenter<V : IView> : IPresenter<V> {
 
     fun addPlayer(player: Player)
 
+    fun getPlayerList()
+
 }

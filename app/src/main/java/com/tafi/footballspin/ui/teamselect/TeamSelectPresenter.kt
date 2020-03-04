@@ -1,6 +1,9 @@
 package com.tafi.footballspin.ui.teamselect
 
+import android.app.Activity
+import android.app.Activity.RESULT_OK
 import com.tafi.footballspin.data.DataManager
+import com.tafi.footballspin.data.db.model.Player
 import com.tafi.footballspin.data.network.AppNetworkManager
 import com.tafi.footballspin.ui.base.BasePresenter
 import com.tafi.footballspin.utils.rx.SchedulerProvider
@@ -19,13 +22,26 @@ class TeamSelectPresenter<V : ITeamSelectView> @Inject constructor(
     ITeamSelectPresenter<V> {
 
     override fun getTeams() {
-
         mCompositeDisposable.add(
-            mDataManager.getTeams()
+            mDataManager.getTeamList()
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe { listTeam ->
                     mView?.updatePlayerList(listTeam)
+                }
+        )
+    }
+
+    override fun updatePlayer(player: Player) {
+        mCompositeDisposable.add(
+            mDataManager.updatePlayer(player)
+                .subscribeOn(mSchedulerProvider.io())
+                .observeOn(mSchedulerProvider.ui())
+                .subscribe {
+                    (mView as? Activity)?.apply {
+                        setResult(RESULT_OK)
+                        finish()
+                    }
                 }
         )
     }

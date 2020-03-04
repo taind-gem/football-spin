@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import android.widget.Toast.LENGTH_LONG
 import android.widget.Toast.LENGTH_SHORT
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -17,14 +16,16 @@ import com.tafi.footballspin.recyclerview.ViewType.VIEW_TYPE_NORMAL
 import com.tafi.footballspin.recyclerview.viewholder.BaseViewHolder
 import com.tafi.footballspin.recyclerview.viewholder.EmptyViewHolder
 import com.tafi.footballspin.recyclerview.viewholder.LoadingViewHolder
+import com.tafi.footballspin.utils.AppConstants.DEFAULT_LIMIT_TEAM_SIZE
 
 /**
  * Created by taind-201 on 3/1/2020.
  */
-class TeamSelectAdapter constructor(var context: Context) :
+class TeamSelectAdapter constructor(var context: Context, var selectedSet: HashSet<Long>) :
     RecyclerView.Adapter<BaseViewHolder>() {
 
-    val selectedSet = hashSetOf<Long>()
+    var onTeamSelectedListener: OnTeamSelectedListener? = null
+
     private var viewType = VIEW_TYPE_LOADING
 
     var mTeamList: List<Team>? = null
@@ -73,7 +74,7 @@ class TeamSelectAdapter constructor(var context: Context) :
     inner class TeamSelectViewHolder constructor(itemView: View) : BaseViewHolder(itemView) {
 
         private var rootView = itemView.findViewById<ConstraintLayout>(R.id.root_view)
-        private var imgTeamLogo = itemView.findViewById<ImageView>(R.id.img_team_logo)
+        private var imgTeamLogo = itemView.findViewById<ImageView>(R.id.img_logo_1)
         private var tvTeamName = itemView.findViewById<TextView>(R.id.tv_team_name)
         private var tvLeagueName = itemView.findViewById<TextView>(R.id.tv_league_name)
         private var ratingBar = itemView.findViewById<RatingBar>(R.id.rating_bar)
@@ -95,23 +96,51 @@ class TeamSelectAdapter constructor(var context: Context) :
                 imgTeamLogo.setImageResource(resourceId)
                 checkBox.isChecked = selectedSet.contains(team.id)
 
+
+                rootView.isActivated = checkBox.isChecked
                 rootView.setOnClickListener {
-                    checkBox.isChecked = !checkBox.isChecked
-                    setSelectTeam(team.id)
+                    if (selectedSet.size >= DEFAULT_LIMIT_TEAM_SIZE && !checkBox.isChecked) {
+                        showEnoughTeamMessage()
+                    } else {
+                        checkBox.isChecked = !checkBox.isChecked
+                        setSelectTeam(team.id)
+                    }
                 }
 
-                checkBox.setOnCheckedChangeListener { _, _ ->
-                    setSelectTeam(team.id)
+                checkBox.setOnClickListener {
+                    if (selectedSet.size >= DEFAULT_LIMIT_TEAM_SIZE && !checkBox.isChecked) {
+                        showEnoughTeamMessage()
+                    } else {
+                        setSelectTeam(team.id)
+                    }
                 }
             }
+        }
+
+        private fun showEnoughTeamMessage(){
+            Toast.makeText(
+                context,
+                context.resources.getString(
+                    R.string.select_enough_team,
+                    DEFAULT_LIMIT_TEAM_SIZE
+                ),
+                LENGTH_SHORT
+            ).show()
         }
 
         private fun setSelectTeam(teamId: Long) {
             if (checkBox.isChecked) selectedSet.add(teamId)
             else selectedSet.remove(teamId)
-            Toast.makeText(context, selectedSet.toString(), LENGTH_SHORT).show()
+
+            rootView.isActivated = checkBox.isChecked
+
+            onTeamSelectedListener?.onTeamSelected()
         }
 
+    }
+
+    interface OnTeamSelectedListener {
+        fun onTeamSelected()
     }
 
 }

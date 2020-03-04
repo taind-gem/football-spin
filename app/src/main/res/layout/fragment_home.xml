@@ -15,27 +15,27 @@
             android:background="#6699CAFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/img_avatar_1" />
 
     <ImageView
-            android:id="@+id/img_team_logo"
+            android:id="@+id/img_logo_1"
             android:layout_width="110dp"
             android:layout_height="110dp"
             app:layout_constraintBottom_toBottomOf="@+id/layout_team"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/img_avatar_1"
+            app:layout_constraintStart_toStartOf="@+id/img_avatar_1"
             app:layout_constraintTop_toTopOf="@+id/layout_team"
             app:srcCompat="@drawable/chelsea" />
 
     <ImageView
-            android:id="@+id/img_team_logo_2"
+            android:id="@+id/img_logo_2"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_team_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/img_logo_1"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="@+id/img_avatar_2"
+            app:layout_constraintStart_toStartOf="@+id/img_avatar_2"
             app:srcCompat="@drawable/bayern" />
 
     <TextView
@@ -47,9 +47,9 @@
             android:textColor="#FFE600"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/img_team_logo"
-            app:layout_constraintStart_toStartOf="@+id/img_team_logo"
-            app:layout_constraintTop_toBottomOf="@+id/img_team_logo" />
+            app:layout_constraintEnd_toEndOf="@+id/img_logo_1"
+            app:layout_constraintStart_toStartOf="@+id/img_logo_1"
+            app:layout_constraintTop_toBottomOf="@+id/img_logo_1" />
 
     <TextView
             android:id="@+id/tv_team_name_2"
@@ -59,12 +59,12 @@
             android:textColor="#FFE600"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/img_team_logo_2"
-            app:layout_constraintStart_toStartOf="@+id/img_team_logo_2"
+            app:layout_constraintEnd_toEndOf="@+id/img_logo_2"
+            app:layout_constraintStart_toStartOf="@+id/img_logo_2"
             app:layout_constraintTop_toTopOf="@+id/tv_team_name_1" />
 
     <TextView
-            android:id="@+id/tv_region_1"
+            android:id="@+id/tv_league_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Premier League"
@@ -74,7 +74,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_team_name_1" />
 
     <TextView
-            android:id="@+id/tv_region_2"
+            android:id="@+id/tv_league_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Laliga"
@@ -98,10 +98,10 @@
             app:layout_constraintTop_toTopOf="@+id/layout_team" />
 
     <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/img_avatar_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintEnd_toStartOf="@+id/img_avatar_2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline"
@@ -116,18 +116,18 @@
             app:layout_constraintGuide_percent="0.05" />
 
     <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/img_avatar_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar_1"
             app:layout_constraintTop_toTopOf="@+id/guideline"
             android:background="@drawable/avatar_border"
             app:srcCompat="@drawable/tuanpb" />
 
     <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_player_name_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/avatar_stroke"
@@ -135,12 +135,12 @@
             android:padding="6dp"
             android:text="Việt Dũng"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView" />
+            app:layout_constraintBottom_toBottomOf="@+id/img_avatar_1"
+            app:layout_constraintEnd_toEndOf="@+id/img_avatar_1"
+            app:layout_constraintStart_toStartOf="@+id/img_avatar_1" />
 
     <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_player_name_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/avatar_stroke"
@@ -148,9 +148,9 @@
             android:padding="6dp"
             android:text="Tuan Phan"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="@+id/imageView2" />
+            app:layout_constraintBottom_toBottomOf="@+id/img_avatar_2"
+            app:layout_constraintEnd_toEndOf="@+id/img_avatar_2"
+            app:layout_constraintStart_toStartOf="@+id/img_avatar_2" />
 
     <Button
             android:id="@+id/button"
@@ -161,9 +161,9 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:text="@string/select_team_list"
-            app:layout_constraintEnd_toEndOf="@+id/img_team_logo"
-            app:layout_constraintStart_toStartOf="@+id/img_team_logo"
-            app:layout_constraintTop_toBottomOf="@+id/tv_region_1" />
+            app:layout_constraintEnd_toEndOf="@+id/img_logo_1"
+            app:layout_constraintStart_toStartOf="@+id/img_logo_1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_league_1" />
 
     <Button
             android:id="@+id/button1"
@@ -173,8 +173,8 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:text="@string/select_team_list"
-            app:layout_constraintEnd_toEndOf="@+id/img_team_logo_2"
-            app:layout_constraintStart_toStartOf="@+id/img_team_logo_2"
+            app:layout_constraintEnd_toEndOf="@+id/img_logo_2"
+            app:layout_constraintStart_toStartOf="@+id/img_logo_2"
             app:layout_constraintTop_toTopOf="@+id/button" />
 
     <TextView
@@ -189,7 +189,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recent_match1"
+            android:id="@+id/rc_recent_matches"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

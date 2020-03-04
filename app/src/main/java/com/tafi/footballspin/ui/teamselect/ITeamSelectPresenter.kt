@@ -1,5 +1,6 @@
 package com.tafi.footballspin.ui.teamselect
 
+import com.tafi.footballspin.data.db.model.Player
 import com.tafi.footballspin.ui.base.IPresenter
 import com.tafi.footballspin.ui.base.IView
 
@@ -10,5 +11,7 @@ import com.tafi.footballspin.ui.base.IView
 interface ITeamSelectPresenter<V : IView> : IPresenter<V> {
 
     fun getTeams()
+
+    fun updatePlayer(player: Player)
 
 }

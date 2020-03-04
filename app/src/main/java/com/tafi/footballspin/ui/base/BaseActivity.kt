@@ -140,7 +140,12 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
         }
     }
 
-    override fun hideKeyboardWhenClickOutsideEdittext(view: View) {
+    override fun openActivityOnTokenExpire() {
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
+    }
+
+    fun hideKeyboardWhenClickOutsideEdittext(view: View) {
         if (view !is EditText) {
             view.setOnTouchListener { _, _ ->
                 hideKeyboard()
@@ -154,12 +159,6 @@ abstract class BaseActivity : AppCompatActivity(), IView, BaseFragment.Callback 
                 hideKeyboardWhenClickOutsideEdittext(innerView)
             }
         }
-    }
-
-
-    override fun openActivityOnTokenExpire() {
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
     }
 
     protected abstract fun initView()

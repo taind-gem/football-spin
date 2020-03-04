@@ -15,7 +15,6 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
     override var mCompositeDisposable: CompositeDisposable
 ) : BasePresenter<V>(mDataManager, mAppNetworkManager, mSchedulerProvider, mCompositeDisposable),
     ISplashPresenter<V> {
-
     override fun onAttach(view: V) {
         super.onAttach(view)
 
@@ -44,6 +43,17 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe {
+                }
+        )
+    }
+
+    override fun getPlayerList() {
+        mCompositeDisposable.add(
+            mDataManager.getPlayerList()
+                .subscribeOn(mSchedulerProvider.io())
+                .observeOn(mSchedulerProvider.ui())
+                .subscribe { players ->
+                    mView?.updatePlayerList(players)
                 }
         )
     }

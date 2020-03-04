@@ -1,6 +1,5 @@
 package com.tafi.footballspin.recyclerview
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -20,6 +19,7 @@ import com.tafi.footballspin.recyclerview.viewholder.EmptyViewHolder
 import com.tafi.footballspin.recyclerview.viewholder.LoadingViewHolder
 import com.tafi.footballspin.ui.splash.SplashActivity
 import com.tafi.footballspin.ui.teamselect.TeamSelectActivity
+import com.tafi.footballspin.utils.AppConstants
 import com.tafi.footballspin.utils.AppConstants.REQUEST_CODE_TEAM_SELECT
 
 /**
@@ -28,17 +28,16 @@ import com.tafi.footballspin.utils.AppConstants.REQUEST_CODE_TEAM_SELECT
 class PlayerAdapter constructor(var context: Context) :
     RecyclerView.Adapter<BaseViewHolder>() {
 
-    val selectedSet = hashSetOf<Long>()
     private var viewType = VIEW_TYPE_LOADING
 
     var mPlayerList: List<Player>? = null
         set(value) {
-            field = value
             value?.let { players ->
                 for (player in players) {
-                    selectedSet.add(player.id)
+                    player.isJoin = true
                 }
             }
+            field = value
             viewType = if (value.isNullOrEmpty()) VIEW_TYPE_EMPTY else VIEW_TYPE_NORMAL
             notifyDataSetChanged()
         }
@@ -99,19 +98,21 @@ class PlayerAdapter constructor(var context: Context) :
                 imgAvatar.setImageResource(resourceId)
                 tvName.text = player.nickname
 
-                setCheckButton(selectedSet.contains(player.id))
+                setCheckButton(player.isJoin)
 
                 imgCheck.setOnClickListener {
-                    val isCheck = selectedSet.contains(player.id)
-                    setCheckButton(!isCheck)
-                    if (isCheck) selectedSet.remove(player.id)
-                    else selectedSet.add(player.id)
+                    setCheckButton(!player.isJoin)
+                    player.isJoin = !player.isJoin
                 }
 
                 btnSelectTeam.setOnClickListener {
-                    openTeamSelectActivity()
+                    openTeamSelectActivity(mPlayerList!![position])
                 }
 
+                val teamNumber =
+                    if (player.listTeamIdSelected != null) player.listTeamIdSelected.size
+                    else 0
+                btnSelectTeam.text = "$teamNumber/8"
             }
         }
 
@@ -129,9 +130,11 @@ class PlayerAdapter constructor(var context: Context) :
             }
         }
 
-        private fun openTeamSelectActivity(){
+        private fun openTeamSelectActivity(player: Player) {
             (context as? SplashActivity)?.apply {
-                startActivityForResult(Intent(this, TeamSelectActivity::class.java), REQUEST_CODE_TEAM_SELECT)
+                val intent = Intent(this, TeamSelectActivity::class.java)
+                intent.putExtra(AppConstants.EXTRA_PLAYER, player.convertPlayerToString())
+                startActivityForResult(intent, REQUEST_CODE_TEAM_SELECT)
             }
         }
     }

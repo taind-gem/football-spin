@@ -23,6 +23,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
 
         activityComponent.inject(this)
 
+        initView()
     }
 
     override fun initView() {

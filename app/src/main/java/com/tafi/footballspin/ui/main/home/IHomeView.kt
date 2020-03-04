@@ -1,6 +1,6 @@
 package com.tafi.footballspin.ui.main.home
 
-import com.tafi.footballspin.model.League
+import com.tafi.footballspin.data.db.model.Player
 import com.tafi.footballspin.ui.base.IView
 
 /**
@@ -9,6 +9,6 @@ import com.tafi.footballspin.ui.base.IView
 
 interface IHomeView : IView {
 
-    fun onLoadDataSuccess(listLeague: List<League>)
+    fun updateHomeView(players: List<Player>)
 
 }

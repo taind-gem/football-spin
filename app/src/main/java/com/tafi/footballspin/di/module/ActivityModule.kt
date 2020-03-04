@@ -69,14 +69,12 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
 
     @Provides
     @PerActivity
-    fun provideMainPresenter(presenter: HomePresenter<IHomeView>): IHomePresenter<IHomeView> {
-        return presenter
-    }
-
-    @Provides
-    @PerActivity
     fun provideTeamSelectPresenter(presenter: TeamSelectPresenter<ITeamSelectView>): ITeamSelectPresenter<ITeamSelectView> {
         return presenter
     }
 
+    @Provides
+    fun provideHomePresenter(presenter: HomePresenter<IHomeView>): IHomePresenter<IHomeView> {
+        return presenter
+    }
 }

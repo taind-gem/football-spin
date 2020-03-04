@@ -7,6 +7,7 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Transient;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,9 +36,16 @@ public class Player {
     @Property(nameInDb = "avatar_url")
     private String avatarUrl;
 
+    @SerializedName("is_join")
+    @Property(nameInDb = "is_join")
+    private Boolean isJoin;
+
     @SerializedName("team_ids")
     @Property(nameInDb = "team_ids")
     private String teamIds;
+
+    @Transient
+    public List<Team> listTeam;
 
     public Player(String username, String nickname, String avatarUrl) {
         this.username = username;
@@ -45,13 +53,14 @@ public class Player {
         this.avatarUrl = avatarUrl;
     }
 
-    @Generated(hash = 775948011)
+    @Generated(hash = 1943544659)
     public Player(Long id, String username, String nickname, String avatarUrl,
-            String teamIds) {
+            Boolean isJoin, String teamIds) {
         this.id = id;
         this.username = username;
         this.nickname = nickname;
         this.avatarUrl = avatarUrl;
+        this.isJoin = isJoin;
         this.teamIds = teamIds;
     }
 
@@ -95,18 +104,31 @@ public class Player {
         return this.teamIds;
     }
 
-    public void setTeamIds(List<Integer> listId) {
-        Gson gson = new Gson();
-        this.teamIds = gson.toJson(listId);
-    }
-
-    public List<Integer> getTeamSelected() {
-        Gson gson = new Gson();
-        return Arrays.asList(gson.fromJson(this.teamIds, Integer[].class));
-    }
-
     public void setTeamIds(String teamIds) {
         this.teamIds = teamIds;
     }
 
+    public Boolean getIsJoin() {
+        return this.isJoin;
+    }
+
+    public void setIsJoin(Boolean isJoin) {
+        this.isJoin = isJoin;
+    }
+
+    public List<Long> getListTeamIdSelected() {
+        Gson gson = new Gson();
+        if (this.teamIds == null) return null;
+        return Arrays.asList(gson.fromJson(this.teamIds, Long[].class));
+    }
+
+    public String convertPlayerToString(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public Player converStringToPlayer(String str){
+        Gson gson = new Gson();
+        return gson.fromJson(str, Player.class);
+    }
 }

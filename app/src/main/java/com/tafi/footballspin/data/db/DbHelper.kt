@@ -18,6 +18,8 @@ interface DbHelper {
 
     fun getPlayerList(): Observable<List<Player>>
 
+    fun updatePlayer(player: Player): Observable<Boolean>
+
     fun savePlayerList(players: List<Player>): Observable<Boolean>
 
     //match db
@@ -26,7 +28,7 @@ interface DbHelper {
     //team db
     fun isTeamEmpty(): Observable<Boolean>
 
-    fun getTeams(): Observable<List<Team>>
+    fun getTeamList(): Observable<List<Team>>
 
     fun saveTeamList(teams: List<Team>): Observable<Boolean>
 

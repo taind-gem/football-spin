@@ -1,10 +1,10 @@
 package com.tafi.footballspin.ui.teamselect
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import com.tafi.footballspin.R
+import com.tafi.footballspin.data.db.model.Player
 import com.tafi.footballspin.data.db.model.Team
 import com.tafi.footballspin.recyclerview.TeamSelectAdapter
 import com.tafi.footballspin.recyclerview.devider.VerticalSpaceDecoration
@@ -14,16 +14,22 @@ import com.tafi.footballspin.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_team_select.*
 import javax.inject.Inject
 
-class TeamSelectActivity : BaseActivity(), ITeamSelectView{
+class TeamSelectActivity : BaseActivity(), ITeamSelectView,
+    TeamSelectAdapter.OnTeamSelectedListener {
 
     @Inject
     lateinit var mPresenter: TeamSelectPresenter<ITeamSelectView>
 
     private lateinit var mTeamAdapter: TeamSelectAdapter
 
+    private lateinit var player: Player
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team_select)
+
+        player = Player().converStringToPlayer(intent.getStringExtra(AppConstants.EXTRA_PLAYER))
+
         activityComponent.inject(this)
         mPresenter.onAttach(this)
 
@@ -33,20 +39,33 @@ class TeamSelectActivity : BaseActivity(), ITeamSelectView{
     }
 
     override fun initView() {
-        mTeamAdapter = TeamSelectAdapter(this)
+        val selectedTeams =
+            if (player.listTeamIdSelected == null) hashSetOf<Long>()
+            else HashSet(player.listTeamIdSelected)
+        mTeamAdapter = TeamSelectAdapter(this, selectedTeams)
+        mTeamAdapter.onTeamSelectedListener = this
+
         val mLayoutManager = LinearLayoutManager(this)
         rc_team_list.apply {
             layoutManager = mLayoutManager
             adapter = mTeamAdapter
-            addItemDecoration(VerticalSpaceDecoration(CommonUtils.dpToPx(this@TeamSelectActivity, 6f)))
+            addItemDecoration(
+                VerticalSpaceDecoration(
+                    CommonUtils.dpToPx(
+                        this@TeamSelectActivity,
+                        6f
+                    )
+                )
+            )
         }
 
         img_back.setOnClickListener { finish() }
+        tv_select_number.text =
+            resources.getString(R.string.selected_number, mTeamAdapter.selectedSet.size)
 
-        btn_finish.setOnClickListener{
-            val intent = Intent().putExtra(AppConstants.EXTRA_NEW_PLAYER, mTeamAdapter.selectedSet)
-            setResult(Activity.RESULT_OK, intent)
-            finish()
+        btn_finish.setOnClickListener {
+            player.teamIds = Gson().toJson(mTeamAdapter.selectedSet)
+            mPresenter.updatePlayer(player)
         }
     }
 
@@ -57,6 +76,11 @@ class TeamSelectActivity : BaseActivity(), ITeamSelectView{
 
     override fun updatePlayerList(teams: List<Team>) {
         mTeamAdapter.mTeamList = teams
+    }
+
+    override fun onTeamSelected() {
+        tv_select_number.text =
+            resources.getString(R.string.selected_number, mTeamAdapter.selectedSet.size)
     }
 
 }

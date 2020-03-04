@@ -70,11 +70,12 @@
             android:id="@+id/rc_team_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_finish"
             app:layout_constraintEnd_toStartOf="@+id/right_bound"
             app:layout_constraintStart_toStartOf="@+id/left_bound"
-            app:layout_constraintTop_toTopOf="@+id/top_bound" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_select_number" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -83,5 +84,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="90dp" />
+
+    <TextView
+            android:id="@+id/tv_select_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã chọn: 5/8"
+            app:layout_constraintEnd_toStartOf="@+id/right_bound"
+            app:layout_constraintTop_toTopOf="@+id/top_bound" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

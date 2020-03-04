@@ -12,7 +12,7 @@ import com.tafi.footballspin.recyclerview.PlayerAdapter
 import com.tafi.footballspin.recyclerview.devider.VerticalSpaceDecoration
 import com.tafi.footballspin.ui.base.BaseActivity
 import com.tafi.footballspin.ui.main.MainActivity
-import com.tafi.footballspin.ui.main.NewPlayerActivity
+import com.tafi.footballspin.ui.main.newplayer.NewPlayerActivity
 import com.tafi.footballspin.utils.AppConstants
 import com.tafi.footballspin.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -60,9 +60,8 @@ class SplashActivity : BaseActivity(), ISplashView {
                     mPresenter.addPlayer(player)
                 }
             AppConstants.REQUEST_CODE_TEAM_SELECT -> {
-                if (resultCode == Activity.RESULT_OK && intent.hasExtra(AppConstants.EXTRA_TEAM_SELECT)) {
-                    val ids =
-                        intent.getSerializableExtra(AppConstants.EXTRA_TEAM_SELECT) as HashSet<Int>
+                if (resultCode == Activity.RESULT_OK) {
+                    mPresenter.getPlayerList()
                 }
             }
         }

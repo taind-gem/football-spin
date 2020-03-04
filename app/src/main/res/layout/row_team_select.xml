@@ -3,14 +3,14 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical" android:layout_width="match_parent"
-        android:background="@color/default_transperent_bg"
+        android:background="@drawable/selector_team"
         android:clickable="true"
         android:focusable="true"
         android:id="@+id/root_view"
         android:layout_height="60dp">
 
     <ImageView
-            android:id="@+id/img_team_logo"
+            android:id="@+id/img_logo_1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -39,7 +39,7 @@
             android:textColor="@color/white"
             android:textSize="18dp"
             app:layout_constraintEnd_toStartOf="@+id/rating_bar"
-            app:layout_constraintStart_toEndOf="@+id/img_team_logo"
+            app:layout_constraintStart_toEndOf="@+id/img_logo_1"
             app:layout_constraintTop_toTopOf="parent" />
 
     <RatingBar
