@@ -12,15 +12,19 @@ import com.tafi.footballspin.ui.main.settings.SettingsFragment
  */
 class MainPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
+    private val listFragment = mutableListOf<Fragment>()
+
+    init {
+        listFragment.add(HomeFragment())
+        listFragment.add(ResultFragment())
+        listFragment.add(SettingsFragment())
+    }
+
     override fun getItem(position: Int): Fragment {
-        return when (position) {
-            0 -> HomeFragment()
-            1 -> ResultFragment()
-            else -> SettingsFragment()
-        }
+        return listFragment[position]
     }
 
     override fun getCount(): Int {
-        return 3
+        return listFragment.size
     }
 }

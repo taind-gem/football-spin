@@ -175,12 +175,39 @@ class AppDataManager @Inject constructor(
     override fun setAccessToken(accessToken: String?) {
         mPreferencesHelper.setAccessToken(accessToken)
     }
+    override fun getWinPoint(): Long {
+        return mPreferencesHelper.getWinPoint()
+    }
+
+    override fun setWinPoint(point: Long) {
+        return mPreferencesHelper.setWinPoint(point)
+    }
+
+    override fun getDrawPoint(): Long {
+        return mPreferencesHelper.getDrawPoint()
+    }
+
+    override fun setDrawPoint(point: Long) {
+        return mPreferencesHelper.setDrawPoint(point)
+    }
+
+    override fun getPlayerList(): Observable<List<Player>> {
+        return mDbHelper.getPlayerList()
+    }
+
+    override fun savePlayerList(players: List<Player>): Observable<Boolean> {
+        return mDbHelper.savePlayerList(players)
+    }
 
     override fun isPlayerEmpty(): Observable<Boolean> {
         return mDbHelper.isPlayerEmpty()
     }
 
-    override fun saveMatch(match: Match): Observable<Long> {
+    override fun getMatchList(): Observable<List<Match>> {
+        return mDbHelper.getMatchList()
+    }
+
+    override fun saveMatch(match: Match): Observable<Boolean> {
         return mDbHelper.saveMatch(match)
     }
 
@@ -190,14 +217,6 @@ class AppDataManager @Inject constructor(
 
     override fun getTeamList(): Observable<List<Team>> {
         return mDbHelper.getTeamList()
-    }
-
-    override fun getPlayerList(): Observable<List<Player>> {
-        return mDbHelper.getPlayerList()
-    }
-
-    override fun savePlayerList(players: List<Player>): Observable<Boolean> {
-        return mDbHelper.savePlayerList(players)
     }
 
     override fun insertPlayer(player: Player): Observable<Boolean> {

@@ -2,7 +2,6 @@ package com.tafi.footballspin.ui.base
 
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.model.ApiError
-import com.tafi.footballspin.data.network.AppNetworkManager
 import com.tafi.footballspin.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -13,7 +12,6 @@ import javax.inject.Inject
 
 open class BasePresenter<V : IView> @Inject constructor(
     open var mDataManager: DataManager,
-    open var mAppNetworkManager: AppNetworkManager,
     open var mSchedulerProvider: SchedulerProvider,
     open var mCompositeDisposable: CompositeDisposable
 ) : IPresenter<V> {

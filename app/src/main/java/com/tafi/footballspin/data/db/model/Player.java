@@ -4,9 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Transient;
 
 import java.util.Arrays;
@@ -55,7 +55,7 @@ public class Player {
 
     @Generated(hash = 1943544659)
     public Player(Long id, String username, String nickname, String avatarUrl,
-            Boolean isJoin, String teamIds) {
+                  Boolean isJoin, String teamIds) {
         this.id = id;
         this.username = username;
         this.nickname = nickname;
@@ -122,12 +122,12 @@ public class Player {
         return Arrays.asList(gson.fromJson(this.teamIds, Long[].class));
     }
 
-    public String convertPlayerToString(){
+    public String convertPlayerToString() {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
 
-    public Player converStringToPlayer(String str){
+    public Player converStringToPlayer(String str) {
         Gson gson = new Gson();
         return gson.fromJson(str, Player.class);
     }

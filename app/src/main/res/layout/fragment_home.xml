@@ -26,7 +26,7 @@
             app:layout_constraintEnd_toEndOf="@+id/img_avatar_1"
             app:layout_constraintStart_toStartOf="@+id/img_avatar_1"
             app:layout_constraintTop_toTopOf="@+id/layout_team"
-            app:srcCompat="@drawable/chelsea" />
+            app:srcCompat="@drawable/ic_team_sample" />
 
     <ImageView
             android:id="@+id/img_logo_2"
@@ -36,14 +36,14 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="@+id/img_avatar_2"
             app:layout_constraintStart_toStartOf="@+id/img_avatar_2"
-            app:srcCompat="@drawable/bayern" />
+            app:srcCompat="@drawable/ic_team_sample" />
 
     <TextView
             android:id="@+id/tv_team_name_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Chelsea FC"
+            android:text="@string/team_1"
             android:textColor="#FFE600"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -55,7 +55,7 @@
             android:id="@+id/tv_team_name_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bayern Munich"
+            android:text="@string/team_2"
             android:textColor="#FFE600"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -97,17 +97,6 @@
             app:layout_constraintStart_toStartOf="@+id/layout_team"
             app:layout_constraintTop_toTopOf="@+id/layout_team" />
 
-    <ImageView
-            android:id="@+id/img_avatar_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/img_avatar_2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline"
-            android:background="@drawable/avatar_border"
-            app:srcCompat="@drawable/dungvv" />
-
     <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
@@ -116,15 +105,18 @@
             app:layout_constraintGuide_percent="0.05" />
 
     <ImageView
-            android:id="@+id/img_avatar_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/img_avatar_1"
-            app:layout_constraintTop_toTopOf="@+id/guideline"
+            android:id="@+id/img_avatar_1"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
             android:background="@drawable/avatar_border"
-            app:srcCompat="@drawable/tuanpb" />
+            app:layout_constraintEnd_toStartOf="@+id/img_avatar_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:srcCompat="@drawable/no_avatar" />
 
     <TextView
             android:id="@+id/tv_player_name_1"
@@ -133,11 +125,24 @@
             android:background="@color/avatar_stroke"
             android:gravity="center"
             android:padding="6dp"
-            android:text="Việt Dũng"
+            android:text="@string/player_1"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/img_avatar_1"
             app:layout_constraintEnd_toEndOf="@+id/img_avatar_1"
             app:layout_constraintStart_toStartOf="@+id/img_avatar_1" />
+
+    <ImageView
+            android:id="@+id/img_avatar_2"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/avatar_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/img_avatar_1"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:srcCompat="@drawable/no_avatar" />
 
     <TextView
             android:id="@+id/tv_player_name_2"
@@ -146,56 +151,82 @@
             android:background="@color/avatar_stroke"
             android:gravity="center"
             android:padding="6dp"
-            android:text="Tuan Phan"
+            android:text="@string/player_2"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/img_avatar_2"
             app:layout_constraintEnd_toEndOf="@+id/img_avatar_2"
             app:layout_constraintStart_toStartOf="@+id/img_avatar_2" />
 
     <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_select_1"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:text="@string/select_team_list"
+            android:text="@string/select"
             app:layout_constraintEnd_toEndOf="@+id/img_logo_1"
             app:layout_constraintStart_toStartOf="@+id/img_logo_1"
             app:layout_constraintTop_toBottomOf="@+id/tv_league_1" />
 
     <Button
-            android:id="@+id/button1"
+            android:id="@+id/btn_select_2"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:text="@string/select_team_list"
+            android:text="@string/select"
             app:layout_constraintEnd_toEndOf="@+id/img_logo_2"
             app:layout_constraintStart_toStartOf="@+id/img_logo_2"
-            app:layout_constraintTop_toTopOf="@+id/button" />
+            app:layout_constraintTop_toTopOf="@+id/btn_select_1" />
 
-    <TextView
-            android:id="@+id/textView4"
+    <Button
+            android:id="@+id/btn_start_game"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/start_game"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_player_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/recent_match"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:constraint_referenced_ids="img_avatar_1,tv_player_name_1"/>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rc_recent_matches"
-            android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_player_2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:constraint_referenced_ids="img_avatar_2,tv_player_name_2"/>
+
+    <ImageView
+            android:id="@+id/img_switch_1"
+            android:layout_width="@dimen/default_icon_size"
+            android:layout_height="@dimen/default_icon_size"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:padding="@dimen/default_icon_padding"
+            app:layout_constraintStart_toStartOf="@+id/img_avatar_1"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:srcCompat="@drawable/ic_switch" />
+
+    <ImageView
+            android:id="@+id/img_switch_2"
+            android:layout_width="@dimen/default_icon_size"
+            android:layout_height="@dimen/default_icon_size"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="@dimen/default_icon_padding"
+            app:layout_constraintEnd_toEndOf="@+id/img_avatar_2"
+            app:layout_constraintTop_toTopOf="@+id/img_avatar_2"
+            app:srcCompat="@drawable/ic_switch" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

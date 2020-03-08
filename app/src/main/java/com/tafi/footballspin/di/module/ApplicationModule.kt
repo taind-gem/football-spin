@@ -38,7 +38,7 @@ class ApplicationModule(private val mApplication: Application) {
     @Provides
     @PreferenceInfo
     fun providePreferenceName(): String {
-        return AppConstants.PREF_NAME
+        return AppConstants.PREF_FILENAME
     }
 
     @Provides

@@ -21,6 +21,7 @@ import com.tafi.footballspin.ui.splash.SplashActivity
 import com.tafi.footballspin.ui.teamselect.TeamSelectActivity
 import com.tafi.footballspin.utils.AppConstants
 import com.tafi.footballspin.utils.AppConstants.REQUEST_CODE_TEAM_SELECT
+import com.tafi.footballspin.utils.CommonUtils
 
 /**
  * Created by taind-201 on 3/1/2020.
@@ -56,7 +57,7 @@ class PlayerAdapter constructor(var context: Context) :
                     R.layout.row_empty,
                     parent,
                     false
-                )
+                ), EmptyViewHolder.TYPE_PLAYER
             )
         }
 
@@ -90,11 +91,7 @@ class PlayerAdapter constructor(var context: Context) :
         override fun onBind(position: Int) {
             super.onBind(position)
             mPlayerList?.get(position)?.let { player ->
-                val resourceId: Int = itemView.context.resources.getIdentifier(
-                    player.avatarUrl,
-                    "drawable",
-                    itemView.context.packageName
-                )
+                val resourceId: Int = CommonUtils.getDrawableByName(itemView.context, player.avatarUrl)
                 imgAvatar.setImageResource(resourceId)
                 tvName.text = player.nickname
 

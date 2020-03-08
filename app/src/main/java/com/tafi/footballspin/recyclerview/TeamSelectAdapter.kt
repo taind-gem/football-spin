@@ -17,6 +17,7 @@ import com.tafi.footballspin.recyclerview.viewholder.BaseViewHolder
 import com.tafi.footballspin.recyclerview.viewholder.EmptyViewHolder
 import com.tafi.footballspin.recyclerview.viewholder.LoadingViewHolder
 import com.tafi.footballspin.utils.AppConstants.DEFAULT_LIMIT_TEAM_SIZE
+import com.tafi.footballspin.utils.CommonUtils
 
 /**
  * Created by taind-201 on 3/1/2020.
@@ -49,7 +50,7 @@ class TeamSelectAdapter constructor(var context: Context, var selectedSet: HashS
                     R.layout.row_empty,
                     parent,
                     false
-                )
+                ), EmptyViewHolder.TYPE_TEAM
             )
         }
 
@@ -86,11 +87,8 @@ class TeamSelectAdapter constructor(var context: Context, var selectedSet: HashS
             super.onBind(position)
             mTeamList?.get(position)?.let { team ->
                 tvTeamName.text = team.name
-                val resourceId: Int = itemView.context.resources.getIdentifier(
-                    team.key,
-                    "drawable",
-                    itemView.context.packageName
-                )
+
+                val resourceId: Int = CommonUtils.getDrawableByName(itemView.context, team.key)
                 tvLeagueName.text = team.leagueName
                 ratingBar.rating = team.rate
                 imgTeamLogo.setImageResource(resourceId)

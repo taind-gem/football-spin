@@ -17,7 +17,7 @@ import javax.inject.Inject
 class LoginActivity : BaseActivity(), ILoginView {
 
     @Inject
-    lateinit var mPresenter: LoginPresenter<ILoginView>
+    lateinit var presenter: LoginPresenter<ILoginView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class LoginActivity : BaseActivity(), ILoginView {
 
         activityComponent.inject(this)
 
-        mPresenter.onAttach(this)
+        presenter.onAttach(this)
     }
 
     override fun initView() {
@@ -42,7 +42,7 @@ class LoginActivity : BaseActivity(), ILoginView {
         }
 
         btnServerLogin.setOnClickListener {
-            mPresenter.onServerLoginClick(
+            presenter.onServerLoginClick(
                 edtEmail.text.toString(),
                 edtPassword.text.toString()
             )
@@ -50,7 +50,7 @@ class LoginActivity : BaseActivity(), ILoginView {
     }
 
     override fun onDestroy() {
-        mPresenter.onDetach()
+        presenter.onDetach()
         super.onDestroy()
     }
 

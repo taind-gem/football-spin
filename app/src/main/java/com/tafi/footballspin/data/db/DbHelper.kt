@@ -23,7 +23,9 @@ interface DbHelper {
     fun savePlayerList(players: List<Player>): Observable<Boolean>
 
     //match db
-    fun saveMatch(match: Match): Observable<Long>
+    fun getMatchList(): Observable<List<Match>>
+
+    fun saveMatch(match: Match): Observable<Boolean>
 
     //team db
     fun isTeamEmpty(): Observable<Boolean>

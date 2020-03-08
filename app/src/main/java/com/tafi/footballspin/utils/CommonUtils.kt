@@ -6,27 +6,20 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.provider.Settings
+import android.text.format.DateFormat
 import android.util.TypedValue
 import com.tafi.footballspin.R
-
 import java.io.IOException
-import java.nio.charset.StandardCharsets
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import java.util.*
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+
 
 /**
  * Created by taind-201 on 2/7/2020.
  */
 
 object CommonUtils {
-
-    private val TAG = "CommonUtils"
-
-    val timeStamp: String
-        get() = SimpleDateFormat(AppConstants.TIMESTAMP_FORMAT, Locale.US).format(Date())
 
     fun showLoadingDialog(context: Context): ProgressDialog {
         val progressDialog = ProgressDialog(context)
@@ -81,6 +74,14 @@ object CommonUtils {
             dp,
             context.resources.displayMetrics
         ).toInt()
+    }
+
+    fun getDrawableByName(context: Context, imageName: String): Int {
+        return context.resources.getIdentifier(imageName, "drawable", context.packageName)
+    }
+
+    fun convertTimeToString(time: Long): String {
+        return DateFormat.format(AppConstants.TIMESTAMP_FORMAT, Date(time)).toString()
     }
 
 }

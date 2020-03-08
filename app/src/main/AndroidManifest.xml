@@ -15,7 +15,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".ui.teamselect.TeamSelectActivity"></activity>
-        <activity android:name=".ui.main.newplayer.NewPlayerActivity" />
+        <activity android:name=".ui.addplayer.AddPlayerAcitivity" />
         <activity
                 android:name=".ui.splash.SplashActivity"
                 android:theme="@style/SplashTheme">

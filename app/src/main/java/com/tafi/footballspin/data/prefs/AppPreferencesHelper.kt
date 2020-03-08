@@ -68,6 +68,21 @@ class AppPreferencesHelper @Inject constructor(
     override fun setAccessToken(accessToken: String?) {
         mPrefs.edit().putString(PREF_KEY_ACCESS_TOKEN, accessToken).apply()
     }
+    override fun getWinPoint(): Long {
+        return mPrefs.getLong(PREF_KEY_WIN_POINT, AppConstants.PREF_WIN_POINT)
+    }
+
+    override fun setWinPoint(point: Long) {
+        mPrefs.edit().putLong(PREF_KEY_WIN_POINT, point).apply()
+    }
+
+    override fun getDrawPoint(): Long {
+        return mPrefs.getLong(PREF_KEY_DRAW_POINT, AppConstants.PREF_DRAW_POINT)
+    }
+
+    override fun setDrawPoint(point: Long) {
+        mPrefs.edit().putLong(PREF_KEY_WIN_POINT, point).apply()
+    }
 
 
     companion object {
@@ -77,6 +92,8 @@ class AppPreferencesHelper @Inject constructor(
         const val PREF_KEY_CURRENT_USER_EMAIL = "PREF_KEY_CURRENT_USER_EMAIL"
         const val PREF_KEY_CURRENT_USER_PROFILE_PIC_URL = "PREF_KEY_CURRENT_USER_PROFILE_PIC_URL"
         const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
+        const val PREF_KEY_WIN_POINT = "PREF_KEY_WIN_POINT"
+        const val PREF_KEY_DRAW_POINT = "PREF_KEY_DRAW_POINT"
     }
 
 }

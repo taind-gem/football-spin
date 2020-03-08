@@ -1,5 +1,6 @@
 package com.tafi.footballspin.ui.main.home
 
+import com.tafi.footballspin.data.db.model.Statistic
 import com.tafi.footballspin.ui.base.IPresenter
 import com.tafi.footballspin.ui.base.IView
 
@@ -10,5 +11,9 @@ import com.tafi.footballspin.ui.base.IView
 interface IHomePresenter<V : IView> : IPresenter<V> {
 
     fun onViewInitialized()
+
+    fun saveMatch(createdTime: Long, statistic: Statistic)
+
+    fun getMatchDetails(): List<Any?>
 
 }

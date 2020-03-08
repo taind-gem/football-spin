@@ -2,7 +2,6 @@ package com.tafi.footballspin.ui.splash
 
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.data.db.model.Player
-import com.tafi.footballspin.data.network.AppNetworkManager
 import com.tafi.footballspin.ui.base.BasePresenter
 import com.tafi.footballspin.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
@@ -10,10 +9,9 @@ import javax.inject.Inject
 
 class SplashPresenter<V : ISplashView> @Inject constructor(
     override var mDataManager: DataManager,
-    override var mAppNetworkManager: AppNetworkManager,
     override var mSchedulerProvider: SchedulerProvider,
     override var mCompositeDisposable: CompositeDisposable
-) : BasePresenter<V>(mDataManager, mAppNetworkManager, mSchedulerProvider, mCompositeDisposable),
+) : BasePresenter<V>(mDataManager, mSchedulerProvider, mCompositeDisposable),
     ISplashPresenter<V> {
     override fun onAttach(view: V) {
         super.onAttach(view)

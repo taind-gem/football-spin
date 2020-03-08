@@ -32,4 +32,11 @@ interface PreferencesHelper {
 
     fun setAccessToken(accessToken: String?)
 
+    fun getWinPoint(): Long
+
+    fun setWinPoint(point: Long)
+
+    fun getDrawPoint(): Long
+
+    fun setDrawPoint(point: Long)
 }

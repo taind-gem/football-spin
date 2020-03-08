@@ -11,6 +11,9 @@ import com.tafi.footballspin.ui.main.MainPagerAdapter
 import com.tafi.footballspin.ui.main.home.HomePresenter
 import com.tafi.footballspin.ui.main.home.IHomePresenter
 import com.tafi.footballspin.ui.main.home.IHomeView
+import com.tafi.footballspin.ui.main.result.IResultPresenter
+import com.tafi.footballspin.ui.main.result.IResultView
+import com.tafi.footballspin.ui.main.result.ResultPresenter
 import com.tafi.footballspin.ui.splash.ISplashPresenter
 import com.tafi.footballspin.ui.splash.ISplashView
 import com.tafi.footballspin.ui.splash.SplashPresenter
@@ -77,4 +80,10 @@ class ActivityModule(private val mActivity: AppCompatActivity) {
     fun provideHomePresenter(presenter: HomePresenter<IHomeView>): IHomePresenter<IHomeView> {
         return presenter
     }
+
+    @Provides
+    fun provideResultPresenter(presenter: ResultPresenter<IResultView>): IResultPresenter<IResultView> {
+        return presenter
+    }
+
 }

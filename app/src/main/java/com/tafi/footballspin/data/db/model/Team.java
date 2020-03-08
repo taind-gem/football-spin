@@ -1,11 +1,8 @@
 package com.tafi.footballspin.data.db.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 /**
  * Created by taind-201 on 2/16/2020.
@@ -15,41 +12,27 @@ import org.greenrobot.greendao.annotation.Generated;
 public class Team {
 
     @Id
-    @SerializedName("id")
-    @Property(nameInDb = "id")
     public Long id;
 
-    @SerializedName("key")
-    @Property(nameInDb = "key")
     public String key;
 
-    @SerializedName("name")
-    @Property(nameInDb = "name")
     public String name;
 
-    @SerializedName("abbr")
-    @Property(nameInDb = "abbr")
     public String abbr;
 
-    @SerializedName("code")
-    @Property(nameInDb = "code")
     public String code;
 
-    @SerializedName("league_name")
-    @Property(nameInDb = "league_name")
     public String leagueName;
 
-    @SerializedName("league_code")
-    @Property(nameInDb = "league_code")
     public String leagueCode;
 
-    @SerializedName("rate")
-    @Property(nameInDb = "rate")
     public Float rate;
 
-    @Generated(hash = 572574055)
+    public Boolean isPlayed;
+
+    @Generated(hash = 287084042)
     public Team(Long id, String key, String name, String abbr, String code,
-            String leagueName, String leagueCode, Float rate) {
+            String leagueName, String leagueCode, Float rate, Boolean isPlayed) {
         this.id = id;
         this.key = key;
         this.name = name;
@@ -58,6 +41,7 @@ public class Team {
         this.leagueName = leagueName;
         this.leagueCode = leagueCode;
         this.rate = rate;
+        this.isPlayed = isPlayed;
     }
 
     @Generated(hash = 882286361)
@@ -126,6 +110,14 @@ public class Team {
 
     public void setRate(Float rate) {
         this.rate = rate;
+    }
+
+    public Boolean getIsPlayed() {
+        return this.isPlayed;
+    }
+
+    public void setIsPlayed(Boolean isPlayed) {
+        this.isPlayed = isPlayed;
     }
 
 }

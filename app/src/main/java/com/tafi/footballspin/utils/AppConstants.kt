@@ -7,13 +7,13 @@ object AppConstants {
 
     const val ALL_TEAM_FILE_NAME = "team_2020.json"
 
-    const val PREF_NAME = "football_spin_pref"
+    const val PREF_FILENAME = "football_spin_pref"
 
     const val DB_NAME = "football_spin.db"
 
     const val NULL_INDEX = -1L
 
-    const val TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss"
+    const val TIMESTAMP_FORMAT = "DD-MM-YYYY"
 
     const val DEFAULT_LIMIT_TEAM_SIZE = 8
 
@@ -21,7 +21,8 @@ object AppConstants {
     const val REQUEST_CODE_TEAM_SELECT = 2
 
     const val EXTRA_NEW_PLAYER = "extra_new_player"
-    const val EXTRA_TEAM_SELECT = "extra_team_select"
     const val EXTRA_PLAYER = "extra_player"
 
+    const val PREF_WIN_POINT: Long = 50
+    const val PREF_DRAW_POINT: Long = 25
 }

@@ -2,14 +2,10 @@ package com.tafi.footballspin.ui.login
 
 import com.tafi.footballspin.R
 import com.tafi.footballspin.data.DataManager
-import com.tafi.footballspin.model.entity.LoggedInMode
-import com.tafi.footballspin.data.network.AppNetworkManager
-import com.tafi.footballspin.data.network.request.LoginRequest
 import com.tafi.footballspin.ui.base.BasePresenter
 import com.tafi.footballspin.utils.CommonUtils
 import com.tafi.footballspin.utils.rx.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -18,10 +14,9 @@ import javax.inject.Inject
 
 class LoginPresenter<V : ILoginView> @Inject constructor(
     override var mDataManager: DataManager,
-    override var mAppNetworkManager: AppNetworkManager,
     override var mSchedulerProvider: SchedulerProvider,
     override var mCompositeDisposable: CompositeDisposable
-) : BasePresenter<V>(mDataManager, mAppNetworkManager, mSchedulerProvider, mCompositeDisposable),
+) : BasePresenter<V>(mDataManager, mSchedulerProvider, mCompositeDisposable),
     ILoginPresenter<V> {
 
     override fun onServerLoginClick(email: String?, password: String?) {
@@ -40,47 +35,47 @@ class LoginPresenter<V : ILoginView> @Inject constructor(
         }
         mView?.showLoading()
 
-        mCompositeDisposable.add(
-            mAppNetworkManager
-                .doServerLoginApiCall(LoginRequest.ServerLoginRequest(email, password))
-                .subscribeOn(mSchedulerProvider.io())
-                .observeOn(mSchedulerProvider.ui())
-                .subscribe(
-                    { response ->
-                        Timber.i(response.toString())
-                        if (!isViewAttached()) return@subscribe
-                        mView?.hideLoading()
-
-                        when (response.statusCode) {
-                            200 -> {
-                                response.profile?.let { profile ->
-                                    mDataManager.updateUserInfo(
-                                        profile.accessToken,
-                                        profile.userId,
-                                        LoggedInMode.MODE_SERVER,
-                                        profile.userName,
-                                        profile.userEmail,
-                                        profile.serverProfilePicUrl
-                                    )
-                                }
-                                mView?.openMainActivity()
-                            }
-                            else -> {
-                                mView?.onError("[ERR" + response.statusCode + "] " + response.message)
-                            }
-                        }
-
-                    },
-                    { throwable ->
-                        Timber.e(throwable)
-                        if (!isViewAttached()) return@subscribe
-
-                        mView?.hideLoading()
-                        mView?.onError(throwable.message)
-
-                    }
-                )
-        )
+//        mCompositeDisposable.add(
+//            mAppNetworkManager
+//                .doServerLoginApiCall(LoginRequest.ServerLoginRequest(email, password))
+//                .subscribeOn(mSchedulerProvider.io())
+//                .observeOn(mSchedulerProvider.ui())
+//                .subscribe(
+//                    { response ->
+//                        Timber.i(response.toString())
+//                        if (!isViewAttached()) return@subscribe
+//                        mView?.hideLoading()
+//
+//                        when (response.statusCode) {
+//                            200 -> {
+//                                response.profile?.let { profile ->
+//                                    mDataManager.updateUserInfo(
+//                                        profile.accessToken,
+//                                        profile.userId,
+//                                        LoggedInMode.MODE_SERVER,
+//                                        profile.userName,
+//                                        profile.userEmail,
+//                                        profile.serverProfilePicUrl
+//                                    )
+//                                }
+//                                mView?.openMainActivity()
+//                            }
+//                            else -> {
+//                                mView?.onError("[ERR" + response.statusCode + "] " + response.message)
+//                            }
+//                        }
+//
+//                    },
+//                    { throwable ->
+//                        Timber.e(throwable)
+//                        if (!isViewAttached()) return@subscribe
+//
+//                        mView?.hideLoading()
+//                        mView?.onError(throwable.message)
+//
+//                    }
+//                )
+//        )
 
     }
 

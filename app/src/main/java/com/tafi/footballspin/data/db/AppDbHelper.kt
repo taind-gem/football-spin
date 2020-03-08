@@ -23,8 +23,8 @@ class AppDbHelper @Inject constructor(dbOpenHelper: DbOpenHelper) : DbHelper {
 
     override fun insertPlayer(player: Player): Observable<Boolean> {
         return Observable.fromCallable {
-            mDaoSession.playerDao.insert(player)
-            return@fromCallable true
+            val id =  mDaoSession.playerDao.insert(player)
+            return@fromCallable id > 0
         }
     }
 
@@ -49,8 +49,17 @@ class AppDbHelper @Inject constructor(dbOpenHelper: DbOpenHelper) : DbHelper {
     /*
      * Match database
      */
-    override fun saveMatch(match: Match): Observable<Long> {
-        return Observable.fromCallable { mDaoSession.matchDao.insert(match) }
+    override fun getMatchList(): Observable<List<Match>> {
+        return Observable.fromCallable { mDaoSession.matchDao.loadAll() }
+    }
+
+    override fun saveMatch(match: Match): Observable<Boolean> {
+        return Observable.fromCallable {
+            val statId = mDaoSession.statisticDao.insert(match.statistic)
+            match.statisticId = statId
+            val matchId = mDaoSession.matchDao.insert(match)
+            return@fromCallable matchId > 0 && statId > 0
+        }
     }
 
 

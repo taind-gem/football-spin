@@ -10,9 +10,9 @@ import com.tafi.footballspin.R
 import com.tafi.footballspin.data.db.model.Player
 import com.tafi.footballspin.recyclerview.PlayerAdapter
 import com.tafi.footballspin.recyclerview.devider.VerticalSpaceDecoration
+import com.tafi.footballspin.ui.addplayer.AddPlayerAcitivity
 import com.tafi.footballspin.ui.base.BaseActivity
 import com.tafi.footballspin.ui.main.MainActivity
-import com.tafi.footballspin.ui.main.newplayer.NewPlayerActivity
 import com.tafi.footballspin.utils.AppConstants
 import com.tafi.footballspin.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -21,7 +21,7 @@ import javax.inject.Inject
 class SplashActivity : BaseActivity(), ISplashView {
 
     @Inject
-    lateinit var mPresenter: SplashPresenter<ISplashView>
+    lateinit var presenter: SplashPresenter<ISplashView>
 
     private lateinit var mPlayerAdapter: PlayerAdapter
 
@@ -31,7 +31,7 @@ class SplashActivity : BaseActivity(), ISplashView {
         activityComponent.inject(this)
 
         initView()
-        mPresenter.onAttach(this)
+        presenter.onAttach(this)
     }
 
     override fun initView() {
@@ -57,18 +57,18 @@ class SplashActivity : BaseActivity(), ISplashView {
                 if (resultCode == Activity.RESULT_OK && intent.hasExtra(AppConstants.EXTRA_NEW_PLAYER)) {
                     val player =
                         intent.getSerializableExtra(AppConstants.EXTRA_NEW_PLAYER) as Player
-                    mPresenter.addPlayer(player)
+                    presenter.addPlayer(player)
                 }
             AppConstants.REQUEST_CODE_TEAM_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    mPresenter.getPlayerList()
+                    presenter.getPlayerList()
                 }
             }
         }
     }
 
     override fun onDestroy() {
-        mPresenter.onDetach()
+        presenter.onDetach()
         super.onDestroy()
     }
 
@@ -97,7 +97,7 @@ class SplashActivity : BaseActivity(), ISplashView {
     }
 
     private fun openNewPlayerActivity() {
-        val intent = Intent(this, NewPlayerActivity::class.java)
+        val intent = Intent(this, AddPlayerAcitivity::class.java)
         startActivityForResult(intent, AppConstants.REQUEST_CODE_NEW_PLAYER)
     }
 
