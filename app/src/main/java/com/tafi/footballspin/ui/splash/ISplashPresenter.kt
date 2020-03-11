@@ -10,4 +10,6 @@ interface ISplashPresenter<V : IView> : IPresenter<V> {
 
     fun getPlayerList()
 
+    fun checkPlayerReady(listPlayer: List<Player>?)
+
 }

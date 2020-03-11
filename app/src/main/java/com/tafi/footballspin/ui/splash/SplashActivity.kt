@@ -46,7 +46,9 @@ class SplashActivity : BaseActivity(), ISplashView {
         updateAppVersion()
 
         btn_add_player.setOnClickListener { openNewPlayerActivity() }
-        btn_start.setOnClickListener { openMainActivity() }
+        btn_start.setOnClickListener {
+            presenter.checkPlayerReady(mPlayerAdapter.mPlayerList)
+        }
     }
 
 

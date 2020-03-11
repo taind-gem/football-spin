@@ -1,5 +1,6 @@
 package com.tafi.footballspin.ui.splash
 
+import com.tafi.footballspin.R
 import com.tafi.footballspin.data.DataManager
 import com.tafi.footballspin.data.db.model.Player
 import com.tafi.footballspin.ui.base.BasePresenter
@@ -13,6 +14,7 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
     override var mCompositeDisposable: CompositeDisposable
 ) : BasePresenter<V>(mDataManager, mSchedulerProvider, mCompositeDisposable),
     ISplashPresenter<V> {
+
     override fun onAttach(view: V) {
         super.onAttach(view)
 
@@ -54,6 +56,26 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
                     mView?.updatePlayerList(players)
                 }
         )
+    }
+
+    override fun checkPlayerReady(listPlayer: List<Player>?) {
+        if (listPlayer == null) return
+        val availablePlayers = listPlayer.filter { player -> player.isJoin == true }
+        var messageRes = 0
+        if (availablePlayers.size < 2) {
+            messageRes = R.string.please_select_at_least_2_players
+        } else {
+            for (player in availablePlayers) {
+                if (player.listTeamIdSelected.isNullOrEmpty()) {
+                    messageRes = R.string.please_select_teams
+                    break
+                }
+            }
+        }
+        when (messageRes) {
+            0 -> mView?.openMainActivity()
+            else -> mView?.showMessage(messageRes)
+        }
     }
 
 }

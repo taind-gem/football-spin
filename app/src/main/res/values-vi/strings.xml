@@ -38,5 +38,7 @@
     <string name="score">Score</string>
     <string name="red_card">Red Card</string>
     <string name="please_update_score">Please update match score</string>
+    <string name="please_select_at_least_2_players">Please select at least 2 players</string>
+    <string name="please_select_teams">Please select teams for players</string>
 
 </resources>
