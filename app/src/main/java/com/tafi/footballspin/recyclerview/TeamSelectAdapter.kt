@@ -22,9 +22,10 @@ import com.tafi.footballspin.utils.CommonUtils
 /**
  * Created by taind-201 on 3/1/2020.
  */
-class TeamSelectAdapter constructor(var context: Context, var selectedSet: HashSet<Long>) :
+class TeamSelectAdapter constructor(var context: Context) :
     RecyclerView.Adapter<BaseViewHolder>() {
 
+    var selectedSet: HashSet<Long> = hashSetOf()
     var onTeamSelectedListener: OnTeamSelectedListener? = null
 
     private var viewType = VIEW_TYPE_LOADING
@@ -72,6 +73,12 @@ class TeamSelectAdapter constructor(var context: Context, var selectedSet: HashS
         holder.onBind(position)
     }
 
+    fun getSelectedTeams(): List<Team>? {
+        if (selectedSet.isEmpty()) return null
+        val list = listOf<Team>()
+        return list
+    }
+
     inner class TeamSelectViewHolder constructor(itemView: View) : BaseViewHolder(itemView) {
 
         private var rootView = itemView.findViewById<ConstraintLayout>(R.id.root_view)
@@ -86,6 +93,7 @@ class TeamSelectAdapter constructor(var context: Context, var selectedSet: HashS
         override fun onBind(position: Int) {
             super.onBind(position)
             mTeamList?.get(position)?.let { team ->
+
                 tvTeamName.text = team.name
 
                 val resourceId: Int = CommonUtils.getDrawableByName(itemView.context, team.key)

@@ -22,11 +22,13 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by taind-201 on 2/12/2020.
  */
 
+@Singleton
 class AppDataManager @Inject constructor(
     @ApplicationContext val context: Context,
     private val mDbHelper: DbHelper,

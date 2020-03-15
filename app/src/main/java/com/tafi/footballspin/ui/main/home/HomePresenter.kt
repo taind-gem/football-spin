@@ -30,35 +30,15 @@ class HomePresenter<V : IHomeView> @Inject constructor(
     var mHostPlayer: Player? = null
     var mGuestPlayer: Player? = null
 
-    var currentTime = 0
-
     private var listPlayer: List<Player>? = null
 
     override fun onViewInitialized() {
-        var mTeams: List<Team>? = null
 
         mCompositeDisposable.add(
-            mDataManager.getTeamList()
+            mDataManager.getPlayerList()
                 .subscribeOn(mSchedulerProvider.io())
                 .observeOn(mSchedulerProvider.ui())
-                .concatMap { teams ->
-                    mTeams = teams
-                    return@concatMap mDataManager.getPlayerList()
-                }
                 .subscribe(Consumer<List<Player>> { players ->
-                    for (player in players) {
-                        val listTeamId = player.listTeamIdSelected
-                        if (!listTeamId.isNullOrEmpty() && mTeams != null) {
-                            if (player.listTeam == null) player.listTeam = mutableListOf()
-
-                            for (id in listTeamId) {
-                                val team = mTeams!!.find { team -> team.id == id }
-                                if (team != null) player.listTeam.add(team)
-
-                            }
-                        }
-                    }
-
                     listPlayer = players
 
                     mView?.apply {
@@ -89,35 +69,26 @@ class HomePresenter<V : IHomeView> @Inject constructor(
         )
     }
 
-    private fun getTeamToPlay(player: Player): Team {
-        val team =
-            player.listTeam.first { team -> (team as Team).isPlayed == null || !team.isPlayed }
-        return team ?: player.listTeam[0]
+    private fun getTeamToPlay(player: Player): Team? {
+        return if (player.listTeam == null) null
+        else {
+            val team = player.listTeam?.first { team -> !team.isPlayed }
+            team ?: player.listTeam!![0]
+        }
     }
 
     override fun saveMatch(createdTime: Long, statistic: Statistic) {
         if (mGuestPlayer == null || mHostPlayer == null) return
-        val match = Match()
-        match.apply {
-            this.hostPlayerId = mHostPlayer!!.id
-            this.hostPlayer = mHostPlayer!!
-
-            this.guestPlayerId = mGuestPlayer!!.id
-            this.guestPlayer = mGuestPlayer!!
-
-            this.hostTeamId = mHostTeam!!.id
-            this.hostTeam = mHostTeam
-
-            this.guestTeamId = mGuestTeam!!.id
-            this.guestTeam = mGuestTeam
-
-            this.statisticId = statistic.id
-            this.statistic = statistic
-
-            this.createdTime = createdTime
-            this.drawPoint = mDataManager.getDrawPoint()
-            this.winPoint = mDataManager.getWinPoint()
-        }
+        val match = Match(
+            hostPlayer = mHostPlayer!!,
+            guestPlayer = mGuestPlayer!!,
+            hostTeam = mHostTeam!!,
+            guestTeam = mGuestTeam!!,
+            statistic = statistic,
+            createdTime = createdTime,
+            drawPoint = mDataManager.getDrawPoint(),
+            winPoint = mDataManager.getWinPoint()
+        )
 
         mCompositeDisposable.add(
             mDataManager.saveMatch(match)

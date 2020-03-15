@@ -2,7 +2,6 @@ package com.tafi.footballspin.ui.teamselect
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import com.tafi.footballspin.R
 import com.tafi.footballspin.data.db.model.Player
 import com.tafi.footballspin.data.db.model.Team
@@ -28,7 +27,7 @@ class TeamSelectActivity : BaseActivity(), ITeamSelectView,
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team_select)
 
-        player = Player().converStringToPlayer(intent.getStringExtra(AppConstants.EXTRA_PLAYER))
+        player = intent.getSerializableExtra(AppConstants.EXTRA_PLAYER) as Player
 
         activityComponent.inject(this)
         mPresenter.onAttach(this)
@@ -39,10 +38,7 @@ class TeamSelectActivity : BaseActivity(), ITeamSelectView,
     }
 
     override fun initView() {
-        val selectedTeams =
-            if (player.listTeamIdSelected == null) hashSetOf<Long>()
-            else HashSet(player.listTeamIdSelected)
-        mTeamAdapter = TeamSelectAdapter(this, selectedTeams)
+        mTeamAdapter = TeamSelectAdapter(this)
         mTeamAdapter.onTeamSelectedListener = this
 
         val mLayoutManager = LinearLayoutManager(this)
@@ -64,7 +60,7 @@ class TeamSelectActivity : BaseActivity(), ITeamSelectView,
             resources.getString(R.string.selected_number, mTeamAdapter.selectedSet.size)
 
         btn_finish.setOnClickListener {
-            player.teamIds = Gson().toJson(mTeamAdapter.selectedSet)
+            player.listTeam = mTeamAdapter.getSelectedTeams()
             mPresenter.updatePlayer(player)
         }
     }

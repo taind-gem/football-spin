@@ -60,21 +60,20 @@ class ResultDialog(
                 return@setOnClickListener
             }
 
-            val statistic = Statistic()
-            statistic.apply {
-                hostScore = edt_score_1.text.toString().toLong()
-                guestScore = edt_score_2.text.toString().toLong()
+            val statistic = Statistic(
+                hostScore = edt_score_1.text.toString().toLong(),
+                guestScore = edt_score_2.text.toString().toLong(),
                 red = when {
                     chk_red_1.isChecked -> 1
                     chk_red_2.isChecked -> -1
                     else -> 0
-                }
+                },
                 yellow = when {
                     chk_yellow_1.isChecked -> 1
                     chk_yellow_2.isChecked -> -1
                     else -> 0
                 }
-            }
+            )
             onFinishMatchListener?.onFinishMatch(statistic)
             dismiss()
         }

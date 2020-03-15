@@ -106,10 +106,10 @@ class PlayerAdapter constructor(var context: Context) :
                     openTeamSelectActivity(mPlayerList!![position])
                 }
 
-                val teamNumber =
-                    if (player.listTeamIdSelected != null) player.listTeamIdSelected.size
-                    else 0
-                btnSelectTeam.text = "$teamNumber/8"
+//                val teamNumber =
+//                    if (player.listTeamIdSelected != null) player.listTeamIdSelected.size
+//                    else 0
+//                btnSelectTeam.text = "$teamNumber/8"
             }
         }
 
@@ -130,7 +130,7 @@ class PlayerAdapter constructor(var context: Context) :
         private fun openTeamSelectActivity(player: Player) {
             (context as? SplashActivity)?.apply {
                 val intent = Intent(this, TeamSelectActivity::class.java)
-                intent.putExtra(AppConstants.EXTRA_PLAYER, player.convertPlayerToString())
+                intent.putExtra(AppConstants.EXTRA_PLAYER, player)
                 startActivityForResult(intent, REQUEST_CODE_TEAM_SELECT)
             }
         }

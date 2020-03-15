@@ -11,7 +11,6 @@ import javax.inject.Inject
 /**
  * Created by taind-201 on 2/7/2020.
  */
-
 class MainApp : Application() {
 
     @Inject

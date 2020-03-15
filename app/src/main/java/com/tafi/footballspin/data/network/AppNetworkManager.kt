@@ -17,11 +17,12 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by taind-201 on 2/20/2020.
  */
-
+@Singleton
 class AppNetworkManager @Inject constructor(@ApplicationContext context: Context) :
     NetworkManager {
 

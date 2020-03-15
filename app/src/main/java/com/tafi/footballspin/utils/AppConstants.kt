@@ -10,6 +10,7 @@ object AppConstants {
     const val PREF_FILENAME = "football_spin_pref"
 
     const val DB_NAME = "football_spin.db"
+    const val DB_VERSION = 1
 
     const val NULL_INDEX = -1L
 

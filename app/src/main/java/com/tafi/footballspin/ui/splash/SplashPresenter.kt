@@ -66,7 +66,7 @@ class SplashPresenter<V : ISplashView> @Inject constructor(
             messageRes = R.string.please_select_at_least_2_players
         } else {
             for (player in availablePlayers) {
-                if (player.listTeamIdSelected.isNullOrEmpty()) {
+                if (player.listTeam.isNullOrEmpty()) {
                     messageRes = R.string.please_select_teams
                     break
                 }
